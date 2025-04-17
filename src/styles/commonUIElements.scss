@@ -1,0 +1,33 @@
+@import './variables';
+
+// Standard Input - general + hover => to use set class="std-form-field" at <mat-form-field>-Element
+.std-form-field
+{
+    .mdc-text-field--filled.mat-mdc-text-field-wrapper.mdc-text-field{
+        background-color: $clrHighlight1;
+        border: 1px solid transparent;
+
+        &:hover{
+            border: 1px solid $clrBaseDark !important;
+        }
+    }
+
+    .mdc-text-field{
+        border-radius: 100px;
+        
+        .mat-mdc-form-field-flex{
+            padding-left: 8px;
+        }
+    }
+    
+    .mdc-line-ripple {
+        display: none;
+      }
+} 
+
+// Standard Input - focused/active
+.std-form-field.mat-focused {
+    .mdc-text-field--filled.mat-mdc-text-field-wrapper.mdc-text-field{
+        border: 1px solid $clrHighlight2 !important;
+    }
+}

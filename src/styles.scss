@@ -2,6 +2,7 @@
 @import './styles/mixin';
 @import './styles/variables';
 @import './styles/base';
+@import './styles/commonUIElements.scss';
 @import './styles/sytemMessages';
 
 
@@ -63,3 +64,6 @@ html {
 .d_none {
     display: none !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
