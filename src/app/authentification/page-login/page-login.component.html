@@ -1,17 +1,24 @@
-<app-header-simple></app-header-simple>
-<main id="main-login">
-    <div id="main-login-content">
-        <mat-card id="login-container" appearance="raised">
-            <h1>Anmeldung</h1>
-            <p>Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest</p>
-            <form class="form-login">
-                <mat-form-field class="width-100 std-form-field">
-                    <mat-label>Telephone</mat-label>
-                    <mat-icon matPrefix>mode_edit</mat-icon>
-                    <input type="tel" matInput placeholder="555-555-1234">
-                </mat-form-field>
-            </form>
-        </mat-card>
-    </div>
-</main>
-<app-footer-simple></app-footer-simple>
+<div id="app-page-login">
+    <app-header-simple></app-header-simple>
+    <main id="main-login">
+        <div id="main-login-content">
+            <mat-card id="login-container" appearance="raised">
+                <h1>Anmeldung</h1>
+                <p>Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest</p>
+                <form class="form-login">
+                    <mat-form-field class="width-100 std-form-field">
+                        <mat-label>Email</mat-label>
+                        <mat-icon matPrefix>email</mat-icon>
+                        <input type="email" matInput placeholder="beispielname@email.de">
+                    </mat-form-field>
+                    <mat-form-field class="width-100 std-form-field">
+                        <mat-label>PW</mat-label>
+                        <mat-icon matPrefix>lock</mat-icon>
+                        <input type="password" matInput placeholder="">
+                    </mat-form-field>
+                </form>
+            </mat-card>
+        </div>
+    </main>
+    <app-footer-simple></app-footer-simple>
+</div>

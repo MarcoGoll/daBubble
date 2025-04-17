@@ -1,5 +1,11 @@
 @import './variables';
 
+// Standard Card
+.mat-mdc-card.mdc-card{
+    border-radius: 30px;
+    padding: 60px;
+}
+
 // Standard Input - general + hover => to use set class="std-form-field" at <mat-form-field>-Element
 .std-form-field
 {

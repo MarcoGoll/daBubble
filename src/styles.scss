@@ -27,7 +27,7 @@ body {
     line-height: 1.5;
     // font-family: $font-family-base;
     // font-size: $fSDefault;
-    // background-color: $clrBackground;
+    background-color: $clrHighlight1;;
 }
 
 @media (max-width: 1023px) {
@@ -65,5 +65,15 @@ html {
     display: none !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.width-100{
+    width: 100%;
+}
+
+html, body {
+    height: 100%; 
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
