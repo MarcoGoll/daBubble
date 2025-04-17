@@ -4,6 +4,7 @@ import { FooterSimpleComponent } from '../../_shared/components/footer-simple/fo
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
+    MatCardModule,
   ],
   templateUrl: './page-login.component.html',
   styleUrl: './page-login.component.scss',
