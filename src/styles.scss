@@ -18,20 +18,20 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: $font-family-base;
+    // font-family: $font-family-base;
 }
 
 /* Typographic tweaks (Add accessible line-height)*/
 body {
     line-height: 1.5;
-    font-family: $font-family-base;
-    font-size: $fSDefault;
-    background-color: $clrBackground;
+    // font-family: $font-family-base;
+    // font-size: $fSDefault;
+    // background-color: $clrBackground;
 }
 
 @media (max-width: 1023px) {
     body {
-        font-size: $fSMobileDefault;
+        // font-size: $fSMobileDefault;
     }
 }
 
