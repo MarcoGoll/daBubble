@@ -9,7 +9,6 @@
 
         &:hover{
             border: 1px solid $clrBaseDark !important;
-            background-color: $clrHighlight1;
         }
     }
 
@@ -30,6 +29,5 @@
 .std-form-field.mat-focused {
     .mdc-text-field--filled.mat-mdc-text-field-wrapper.mdc-text-field{
         border: 1px solid $clrHighlight2 !important;
-        background-color: $clrHighlight1;
     }
 }
