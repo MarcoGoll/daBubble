@@ -7,10 +7,11 @@
 
 #main-login{
     @include setFlex();
+    padding: 8px;
 }
 
 #login-container{
-    max-width: 600px;
+    width: clamp(280px, 100%, 600px);
     @include setFlex($fd:column, $jc:space-between, $ai:stretch, $gap:24px);
     h1,p{
         text-align: center;
