@@ -17,3 +17,15 @@
         text-align: center;
     }
 }
+
+.action-links-container-login{
+    @include setFlex($gap: 16px);
+}
+
+.google-container-login{
+    @include setFlex($fd:column)
+}
+
+.confirm-container-login{
+    @include setFlex($gap:16px)
+}
