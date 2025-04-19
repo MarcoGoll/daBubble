@@ -37,3 +37,34 @@
         border: 1px solid $clrHighlight2 !important;
     }
 }
+
+// BTN's
+.primaryBtn, .secondaryBtn{
+    border-radius: 25px;
+    padding: 12px 25px
+}
+
+.primaryBtn{
+    background-color: $clrHighlight2;
+    color: $clrBaseBright;
+
+    &:hover{
+        background-color: $clrHighlight2Brighter1;
+    }
+}
+
+.secondaryBtn.mat-mdc-outlined-button:not(:disabled){
+    background-color: $clrBaseBright;
+    color: $clrHighlight2;
+    border: 1px solid $clrHighlight2;
+
+    &:hover{
+        background-color: $clrHighlight2Brighter2;
+        color: $clrBaseBright;
+    }
+
+    &:active{
+        background-color: $clrHighlight2;
+        color: $clrBaseBright;
+    }
+}
