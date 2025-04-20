@@ -1,0 +1,25 @@
+@import './../../../../styles.scss';
+
+footer{
+    @include setFlex();
+}
+
+.footer-content{
+    @include setFlex();
+    padding: 16px;
+}
+
+.footer-link{
+    all: unset;
+    cursor: pointer;
+    color: $clrHighlight2;
+    padding: 10px 15px;
+    border-radius: 100px;
+    font-size: $fsSecondary;
+    border: 1px solid transparent;
+    
+    &:hover{
+        font-weight: bold;
+        border: 1px solid $clrHighlight2;
+    }
+}

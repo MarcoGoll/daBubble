@@ -10,6 +10,10 @@
     padding: 8px;
 }
 
+#main-login-content{
+    @include setFlex();
+}
+
 #login-container{
     width: clamp(280px, 100%, 600px);
     @include setFlex($fd:column, $jc:space-between, $ai:stretch, $gap:24px);
@@ -71,6 +75,7 @@
 }
 
 .confirm-container-login{
-    @include setFlex($gap:16px)
+    @include setFlex($gap:16px);
+    padding-top: 48px;
 }
 

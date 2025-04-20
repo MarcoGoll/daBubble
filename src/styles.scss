@@ -32,7 +32,7 @@ body {
 
 @media (max-width: 1023px) {
     body {
-        // font-size: $fSMobileDefault;
+        font-size: $fsMobileDefault;
     }
 }
 
@@ -55,7 +55,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.contentLimit {
+.content-limit {
     width: 100%;
     min-width: 300px;
     max-width: 1920px;
