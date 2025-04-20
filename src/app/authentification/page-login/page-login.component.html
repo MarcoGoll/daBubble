@@ -5,7 +5,7 @@
             <mat-card id="login-container" appearance="raised">
                 <h1>Anmeldung</h1>
                 <p>Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest</p>
-                <form class="form-login">
+                <form id="form-login" class="form-login" (ngSubmit)="onSubmit(formLogin)" #formLogin="ngForm">
                     <div class="form-fields">
                         <mat-form-field class="width-100 std-form-field">
                             <mat-label>Email</mat-label>
@@ -34,8 +34,9 @@
                         </div>
                     </div>
                     <div class="confirm-container-login">
-                        <button mat-flat-button class="primaryBtn" color="primary">Anmelden</button>
-                        <button mat-stroked-button class="secondaryBtn">Gäste-Login</button>
+                        <button mat-flat-button class="primaryBtn" color="primary" type="submit"
+                            value="Send">Anmelden</button>
+                        <button mat-stroked-button class="secondaryBtn" (onclick)="submitAsGuest()">Gäste-Login</button>
                     </div>
                 </form>
             </mat-card>

@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-page-login',
@@ -24,4 +24,17 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './page-login.component.html',
   styleUrl: './page-login.component.scss',
 })
-export class PageLoginComponent {}
+export class PageLoginComponent {
+  /**
+   * Handles the form submission.
+   *
+   * @param {NgForm} ngForm - The form object that contains the login data to be submitted.
+   */
+  onSubmit(ngForm: NgForm) {
+    console.log('Submit is done');
+  }
+
+  submitAsGuest() {
+    console.log('Submit as guest is done');
+  }
+}
