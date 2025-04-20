@@ -11,7 +11,20 @@
 {
     .mdc-text-field--filled.mat-mdc-text-field-wrapper.mdc-text-field{
         background-color: $clrHighlight1;
+        height: $stdHeightInput;
         border: 1px solid transparent;
+
+        .mat-mdc-form-field-focus-overlay{
+            height: inherit;
+        }
+
+        .mat-mdc-form-field-flex{
+            height: inherit;
+            
+            .mat-mdc-form-field-infix{
+                height: inherit;
+            }
+        }
 
         &:hover{
             border: 1px solid $clrBaseDark !important;
@@ -19,7 +32,7 @@
     }
 
     .mdc-text-field{
-        border-radius: 100px;
+        border-radius: $stdRadiusInput;
         
         .mat-mdc-form-field-flex{
             padding-left: 8px;

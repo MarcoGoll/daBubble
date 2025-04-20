@@ -26,6 +26,17 @@
     @include setFlex($fd:column)
 }
 
+.google-auth-link-container{
+    cursor: pointer;
+    @include setFlex($gap:8px);
+    background-color: $clrHighlight1;
+    border-radius: $stdRadiusInput;
+    padding: 11px 32px;
+    height: $stdHeightInput;
+    
+}
+
 .confirm-container-login{
     @include setFlex($gap:16px)
 }
+

@@ -9,12 +9,12 @@
                     <mat-form-field class="width-100 std-form-field">
                         <mat-label>Email</mat-label>
                         <mat-icon matPrefix>email</mat-icon>
-                        <input type="email" matInput placeholder="beispielname@email.de">
+                        <input type="email" matInput placeholder="beispielname@email.de" required>
                     </mat-form-field>
                     <mat-form-field class="width-100 std-form-field">
                         <mat-label>PW</mat-label>
                         <mat-icon matPrefix>lock</mat-icon>
-                        <input type="password" matInput placeholder="">
+                        <input type="password" matInput placeholder="" required>
                     </mat-form-field>
                     <div class="action-links-container-login">
                         <a href="#">Passwort vergessen?</a>
@@ -22,7 +22,10 @@
                     </div>
                     <div class="google-container-login">
                         <p>ODER</p>
-                        <a href="#">Anmelden mit Google</a>
+                        <div class="google-auth-link-container width-100">
+                            <img src="./assets/icons/Google.svg" alt="google icon">
+                            <a class="google-auth-link" href="#">Anmelden mit Google</a>
+                        </div>
                     </div>
                     <div class="confirm-container-login">
                         <button mat-flat-button class="primaryBtn" color="primary">Anmelden</button>
