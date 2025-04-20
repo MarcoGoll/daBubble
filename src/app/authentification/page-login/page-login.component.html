@@ -6,22 +6,28 @@
                 <h1>Anmeldung</h1>
                 <p>Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest</p>
                 <form class="form-login">
-                    <mat-form-field class="width-100 std-form-field">
-                        <mat-label>Email</mat-label>
-                        <mat-icon matPrefix>email</mat-icon>
-                        <input type="email" matInput placeholder="beispielname@email.de" required>
-                    </mat-form-field>
-                    <mat-form-field class="width-100 std-form-field">
-                        <mat-label>PW</mat-label>
-                        <mat-icon matPrefix>lock</mat-icon>
-                        <input type="password" matInput placeholder="" required>
-                    </mat-form-field>
+                    <div class="form-fields">
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Email</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input type="email" matInput placeholder="beispielname@email.de" required>
+                        </mat-form-field>
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>PW</mat-label>
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <input type="password" matInput placeholder="" required>
+                        </mat-form-field>
+                    </div>
                     <div class="action-links-container-login">
-                        <a href="#">Passwort vergessen?</a>
-                        <a href="#">Konto erstellen</a>
+                        <a class="action-link" href="#">Passwort vergessen?</a>
+                        <a class="action-link" href="#">Konto erstellen</a>
                     </div>
                     <div class="google-container-login">
-                        <p>ODER</p>
+                        <div class="horizontal-seperator-container width-100">
+                            <div class="horizontal-seperator"></div>
+                            <p>ODER</p>
+                            <div class="horizontal-seperator"></div>
+                        </div>
                         <div class="google-auth-link-container width-100">
                             <img src="./assets/icons/Google.svg" alt="google icon">
                             <a class="google-auth-link" href="#">Anmelden mit Google</a>

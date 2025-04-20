@@ -16,14 +16,33 @@
     h1,p{
         text-align: center;
     }
+    p{
+        font-size: 20px;
+    }
+}
+
+.form-login{
+    @include setFlex($fd:column, $ai:stretch, $gap:16px)
 }
 
 .action-links-container-login{
     @include setFlex($gap: 16px);
 }
 
+.action-link{
+  all: unset;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 100px;
+  color: $clrHighlight2;
+  &:hover, &:focus{
+    background-color: $clrHighlight1;
+    font-weight: bold;
+  }  
+}
+
 .google-container-login{
-    @include setFlex($fd:column)
+    @include setFlex($fd:column, $ai:stretch, $gap:24px)
 }
 
 .google-auth-link-container{
@@ -33,6 +52,21 @@
     border-radius: $stdRadiusInput;
     padding: 11px 32px;
     height: $stdHeightInput;
+
+    &:hover{
+        border: 1px solid $clrHighlight2;
+        a{
+            font-weight: bold;
+        }
+    }
+
+    a{
+        all: unset;
+        color: $clrHighlight2;
+        &:focus{
+            font-weight: bold;
+        }
+    }
     
 }
 

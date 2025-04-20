@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixin';
 
 // Standard Card
 .mat-mdc-card.mdc-card{
@@ -53,8 +54,10 @@
 
 // BTN's
 .primaryBtn, .secondaryBtn{
+    height: 48px;
     border-radius: 25px;
-    padding: 12px 25px
+    padding: 12px 25px;
+    font-weight: 700;
 }
 
 .primaryBtn{
@@ -79,5 +82,15 @@
     &:active{
         background-color: $clrHighlight2;
         color: $clrBaseBright;
+    }
+}
+
+// Seperator
+.horizontal-seperator-container{
+    @include setFlex($gap: 16px);
+    .horizontal-seperator{
+        flex: 1;
+        height: 1px;
+        border: 1px solid $clrBaseDarkTransparent02;
     }
 }
