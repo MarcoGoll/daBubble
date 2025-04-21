@@ -36,7 +36,8 @@
                     <div class="confirm-container-login">
                         <button mat-flat-button class="primaryBtn" color="primary" type="submit"
                             value="Send">Anmelden</button>
-                        <button mat-stroked-button class="secondaryBtn" (onclick)="submitAsGuest()">Gäste-Login</button>
+                        <button mat-stroked-button class="secondaryBtn" type="button"
+                            (click)="submitAsGuest()">Gäste-Login</button>
                     </div>
                 </form>
             </mat-card>

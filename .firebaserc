@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dabubble-c2fba": {
+      "hosting": {
+        "dabubble": [
+          "dabubble-c2fba"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dabubble-c2fba"
+  }
+}
