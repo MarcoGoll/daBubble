@@ -28,9 +28,9 @@
                             <p>ODER</p>
                             <div class="horizontal-seperator"></div>
                         </div>
-                        <div class="google-auth-link-container width-100">
+                        <div class="google-auth-link-container width-100" (click)="authService.loginWithGoogle()">
                             <img src="./assets/icons/Google.svg" alt="google icon">
-                            <a class="google-auth-link" href="#">Anmelden mit Google</a>
+                            <p class="google-auth-link">Anmelden mit Google</p>
                         </div>
                     </div>
                     <div class="confirm-container-login">

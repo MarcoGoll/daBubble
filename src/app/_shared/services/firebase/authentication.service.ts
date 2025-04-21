@@ -6,9 +6,12 @@ import {
   updateProfile,
   signOut,
   User,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+const googleAuthProvider = new GoogleAuthProvider();
 
 @Injectable({
   providedIn: 'root',
@@ -139,6 +142,35 @@ export class AuthenticationService {
           this.setFirebaseError(error);
         });
     }
+  }
+
+  // ##########################################################################################################
+  // Authentication via Google
+  // ##########################################################################################################
+  async loginWithGoogle() {
+    await signInWithPopup(this.auth, googleAuthProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+        this.router.navigate(['/']);
+        console.log('This user was logged in: ', user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+        this.setFirebaseError(error);
+      });
   }
 
   // ##########################################################################################################
