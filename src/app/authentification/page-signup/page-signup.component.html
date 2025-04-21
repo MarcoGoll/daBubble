@@ -1,1 +1,78 @@
-<p>page-signup works!</p>
+<div id="app-page-signup">
+    <app-header-simple></app-header-simple>
+    <main id="main-signup">
+        <div id="main-signup-content" class="content-limit">
+            <mat-card id="signup-container" appearance="raised">
+                <a routerLink="/login">back</a>
+                <h1>Konto erstellen</h1>
+                <p>Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues DABubble-Konto.</p>
+                <form id="form-signup" class="form-signup" (ngSubmit)="onSubmit(formSignup)" #formSignup="ngForm">
+                    <div class="form-fields">
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Vorname</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input type="text" matInput name="firstName" [(ngModel)]="firstName"
+                                #firstNameInput="ngModel" placeholder="Max" required>
+                            @if (firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)) {
+                            <mat-error>
+                                Bitte gib einen Vornamen ein.
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Nachname</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input type="text" matInput name="lastName" [(ngModel)]="lastName" #lastNameInput="ngModel"
+                                placeholder="Mustermann" required>
+                            @if (lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)) {
+                            <mat-error>
+                                Bitte gib einen Nachnamen ein.
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Email</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input type="email" matInput name="email" [(ngModel)]="email" #emailInput="ngModel"
+                                placeholder="beispielname@email.de" required
+                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                            @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
+                            <mat-error>
+                                Bitte gib eine gültige E-Mail-Adresse ein.
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Passwort</mat-label>
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <input type="password" matInput name="password" [(ngModel)]="password"
+                                #passwordInput="ngModel" placeholder="" required pattern=".{6,}">
+                            @if(passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)){
+                            <mat-error>
+                                Bitte gib ein gültiges Passwort ein (Min. 6 Zeichen).
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-100 std-form-field">
+                            <mat-label>Passwort Wiederholung</mat-label>
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <input type="password" matInput name="passwordRepeat" [(ngModel)]="passwordRepeat"
+                                #passwordRepeatInput="ngModel" placeholder="" required pattern=".{6,}">
+                            @if(passwordRepeatInput.invalid && (passwordRepeatInput.dirty ||
+                            passwordRepeatInput.touched)){
+                            <mat-error>
+                                Bitte gib ein gültiges Passwort ein (Min. 6 Zeichen).
+                            </mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <div class="confirm-container-login">
+                        <button mat-flat-button class="primaryBtn" color="primary" type="submit"
+                            value="Send">Weiter</button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </main>
+    <app-footer-simple></app-footer-simple>
+</div>

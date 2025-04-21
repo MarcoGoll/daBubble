@@ -67,8 +67,10 @@ export class AuthenticationService {
     await signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
         // Signed in
+        this.isUserLoggedIn = true;
+        this.currentLoggedInUser = userCredential.user;
         this.router.navigate(['/']);
-        console.log('This user was logged in: ', userCredential);
+        console.log('This user was logged in: ', userCredential.user);
 
         this.resetFirebaseError();
       })
@@ -87,6 +89,8 @@ export class AuthenticationService {
     await signOut(this.auth)
       .then(() => {
         // Signed out
+        this.isUserLoggedIn = false;
+        this.currentLoggedInUser = null;
         this.router.navigate(['/login']);
         this.resetFirebaseError();
         // ...
@@ -149,16 +153,19 @@ export class AuthenticationService {
   // ##########################################################################################################
   async loginWithGoogle() {
     await signInWithPopup(this.auth, googleAuthProvider)
-      .then((result) => {
+      .then((userCredential) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const credential =
+          GoogleAuthProvider.credentialFromResult(userCredential);
         const token = credential?.accessToken;
         // The signed-in user info.
-        const user = result.user;
+        const user = userCredential.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
+        this.isUserLoggedIn = true;
+        this.currentLoggedInUser = userCredential.user;
         this.router.navigate(['/']);
-        console.log('This user was logged in: ', user);
+        console.log('This user was logged in: ', this.currentLoggedInUser);
       })
       .catch((error) => {
         // Handle Errors here.

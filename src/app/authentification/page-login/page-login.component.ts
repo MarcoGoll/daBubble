@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-page-login',
@@ -21,12 +22,16 @@ import { AuthenticationService } from '../../_shared/services/firebase/authentic
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
+    RouterLink,
   ],
   templateUrl: './page-login.component.html',
   styleUrl: './page-login.component.scss',
 })
 export class PageLoginComponent {
   authService = inject(AuthenticationService);
+  email: string = '';
+  password: string = '';
+
   GUESTUSER: { email: string; pw: string } = {
     email: 'guest@user.de',
     pw: '123456',
