@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderSimpleComponent } from '../../_shared/components/header-simple/header-simple.component';
 import { FooterSimpleComponent } from '../../_shared/components/footer-simple/footer-simple.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-page-login',
@@ -25,6 +26,12 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './page-login.component.scss',
 })
 export class PageLoginComponent {
+  authService = inject(AuthenticationService);
+  GUESTUSER: { email: string; pw: string } = {
+    email: 'guest@user.de',
+    pw: '123456',
+  };
+
   /**
    * Handles the form submission.
    *
@@ -36,5 +43,6 @@ export class PageLoginComponent {
 
   submitAsGuest() {
     console.log('Submit as guest is done');
+    this.authService.login(this.GUESTUSER.email, this.GUESTUSER.pw);
   }
 }
