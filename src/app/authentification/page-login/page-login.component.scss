@@ -29,6 +29,10 @@
     @include setFlex($fd:column, $ai:stretch, $gap:16px)
 }
 
+.form-fields{
+    @include setFlex($fd:column, $ai:stretch, $gap:8px)
+}
+
 .action-links-container-login{
     @include setFlex($gap: 16px);
 }

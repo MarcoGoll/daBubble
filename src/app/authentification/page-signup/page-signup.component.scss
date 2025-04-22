@@ -1,0 +1,38 @@
+@import './../../../styles.scss';
+
+#app-page-signup{
+    min-height: 100svh;
+    @include setFlex($fd:column, $jc:space-between, $ai:stretch);
+}
+
+#main-signup{
+    @include setFlex();
+    padding: 8px;
+}
+
+#main-signup-content{
+    @include setFlex();
+}
+
+#signup-container{
+    width: clamp(280px, 100%, 600px);
+    @include setFlex($fd:column, $jc:space-between, $ai:stretch, $gap:24px);
+    h1,p{
+        text-align: center;
+    }
+    p{
+        font-size: 20px;
+    }
+}
+
+.form-fields{
+    @include setFlex($fd:column, $ai:stretch, $gap:8px)
+}
+
+.form-fields-name{
+    @include setFlex($gap:8px)
+}
+
+.confirm-container-login{
+    @include setFlex($jc:flex-end);
+}

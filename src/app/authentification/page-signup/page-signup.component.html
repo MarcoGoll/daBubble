@@ -8,28 +8,30 @@
                 <p>Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues DABubble-Konto.</p>
                 <form id="form-signup" class="form-signup" (ngSubmit)="onSubmit(formSignup)" #formSignup="ngForm">
                     <div class="form-fields">
-                        <mat-form-field class="width-100 std-form-field">
-                            <mat-label>Vorname</mat-label>
-                            <mat-icon matPrefix>email</mat-icon>
-                            <input type="text" matInput name="firstName" [(ngModel)]="firstName"
-                                #firstNameInput="ngModel" placeholder="Max" required>
-                            @if (firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)) {
-                            <mat-error>
-                                Bitte gib einen Vornamen ein.
-                            </mat-error>
-                            }
-                        </mat-form-field>
-                        <mat-form-field class="width-100 std-form-field">
-                            <mat-label>Nachname</mat-label>
-                            <mat-icon matPrefix>email</mat-icon>
-                            <input type="text" matInput name="lastName" [(ngModel)]="lastName" #lastNameInput="ngModel"
-                                placeholder="Mustermann" required>
-                            @if (lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)) {
-                            <mat-error>
-                                Bitte gib einen Nachnamen ein.
-                            </mat-error>
-                            }
-                        </mat-form-field>
+                        <div class="form-fields-name">
+                            <mat-form-field class="width-100 std-form-field">
+                                <mat-label>Vorname</mat-label>
+                                <mat-icon matPrefix>person</mat-icon>
+                                <input type="text" matInput name="firstName" [(ngModel)]="firstName"
+                                    #firstNameInput="ngModel" placeholder="Max" required>
+                                @if (firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)) {
+                                <mat-error>
+                                    Bitte gib einen Vornamen ein.
+                                </mat-error>
+                                }
+                            </mat-form-field>
+                            <mat-form-field class="width-100 std-form-field">
+                                <mat-label>Nachname</mat-label>
+                                <mat-icon matPrefix>person</mat-icon>
+                                <input type="text" matInput name="lastName" [(ngModel)]="lastName"
+                                    #lastNameInput="ngModel" placeholder="Mustermann" required>
+                                @if (lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)) {
+                                <mat-error>
+                                    Bitte gib einen Nachnamen ein.
+                                </mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
                         <mat-form-field class="width-100 std-form-field">
                             <mat-label>Email</mat-label>
                             <mat-icon matPrefix>email</mat-icon>
