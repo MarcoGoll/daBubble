@@ -34,6 +34,12 @@ export class PageSignupComponent {
   email: string = '';
   password: string = '';
   passwordRepeat: string = '';
+  isSignupStep: number = 1;
+  selectedAvatar: number = 1;
+
+  constructor() {
+    this.isSignupStep = 1;
+  }
 
   /**
    * Handles the form submission.
@@ -42,5 +48,17 @@ export class PageSignupComponent {
    */
   onSubmit(ngForm: NgForm) {
     console.log('Signup is done');
+  }
+
+  setNextSignupStep() {
+    this.isSignupStep += 1;
+  }
+
+  setPreviousSignupStep() {
+    this.isSignupStep -= 1;
+  }
+
+  setSelectedAvatarTo(id: number) {
+    this.selectedAvatar = id;
   }
 }
