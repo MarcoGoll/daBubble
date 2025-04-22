@@ -4,8 +4,7 @@
         <div id="main-signup-content" class="content-limit">
             <mat-card id="signup-container" appearance="raised">
                 <form id="form-signup" class="form-signup" (ngSubmit)="onSubmit(formSignup)" #formSignup="ngForm">
-                    @if(isSignupStep === 1){
-                    <div class="signup-contact-data-container">
+                    <div class="signup-contact-data-container" [ngClass]="{'d_none':isSignupStep!=1}">
                         <a routerLink="/login">back</a>
                         <h1>Konto erstellen</h1>
                         <p>Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues DABubble-Konto.</p>
@@ -51,9 +50,14 @@
                                 <mat-icon matPrefix>lock</mat-icon>
                                 <input type="password" matInput name="password" [(ngModel)]="password"
                                     #passwordInput="ngModel" placeholder="" required pattern=".{6,}">
-                                @if(passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)){
+                                @if (passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)) {
                                 <mat-error>
+                                    @if (passwordInput.errors?.['pattern']) {
                                     Bitte gib ein gültiges Passwort ein (Min. 6 Zeichen).
+                                    }
+                                    @if (passwordInput.errors?.['mismatch']) {
+                                    Ihre Passwörter müssen übereinstimmen.
+                                    }
                                 </mat-error>
                                 }
                             </mat-form-field>
@@ -62,21 +66,25 @@
                                 <mat-icon matPrefix>lock</mat-icon>
                                 <input type="password" matInput name="passwordRepeat" [(ngModel)]="passwordRepeat"
                                     #passwordRepeatInput="ngModel" placeholder="" required pattern=".{6,}">
-                                @if(passwordRepeatInput.invalid && (passwordRepeatInput.dirty ||
-                                passwordRepeatInput.touched)){
+                                @if (passwordRepeatInput.invalid && (passwordRepeatInput.dirty ||
+                                passwordRepeatInput.touched)) {
                                 <mat-error>
+                                    @if (passwordRepeatInput.errors?.['pattern']) {
                                     Bitte gib ein gültiges Passwort ein (Min. 6 Zeichen).
+                                    }
+                                    @if (passwordRepeatInput.errors?.['mismatch']) {
+                                    Ihre Passwörter müssen übereinstimmen.
+                                    }
                                 </mat-error>
                                 }
                             </mat-form-field>
                         </div>
                         <div class="confirm-container-login">
                             <button mat-flat-button class="primaryBtn" color="primary" type="submit" value="Send"
-                                (click)="setNextSignupStep()">Weiter</button>
+                                (click)="confirmContactData(formSignup)">Weiter</button>
                         </div>
                     </div>
-                    }@else {
-                    <div class="signup-contact-avatar-container">
+                    <div class="signup-contact-avatar-container" [ngClass]="{'d_none':isSignupStep!=2}">
                         <a (click)="setPreviousSignupStep()">back</a>
                         <h1>Wähle deinen Avatar</h1>
                         <div class="selected-avatar">
@@ -109,8 +117,6 @@
                                 value="Send">Weiter</button>
                         </div>
                     </div>
-                    }
-
                 </form>
             </mat-card>
         </div>

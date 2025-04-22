@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-page-signup',
@@ -23,6 +24,7 @@ import { RouterLink } from '@angular/router';
     MatCardModule,
     MatButtonModule,
     RouterLink,
+    CommonModule,
   ],
   templateUrl: './page-signup.component.html',
   styleUrl: './page-signup.component.scss',
@@ -42,6 +44,51 @@ export class PageSignupComponent {
   }
 
   /**
+   * Handles the confirmation of the contact data.
+   *
+   * @param {NgForm} ngForm - The form object that contains the signup data to be submitted.
+   */
+  confirmContactData(ngForm: NgForm) {
+    this.markControlsAsTouched(ngForm);
+    if (!this.checkPasswordsMatch(ngForm)) {
+      return;
+    }
+    if (ngForm.valid) {
+      this.setNextSignupStep();
+    }
+  }
+
+  /**
+   * Marks all form controls as touched to trigger validation messages.
+   *
+   * @param {NgForm} ngForm - The form object whose controls should be marked as touched.
+   */
+  markControlsAsTouched(ngForm: NgForm) {
+    // Mark all controls as touched to trigger validation messages
+    Object.values(ngForm.controls).forEach((control) => {
+      control.markAsTouched();
+    });
+  }
+
+  /**
+   * Checks if the entered passwords match and sets form control errors if they don't.
+   *
+   * @param {NgForm} ngForm - The form object containing the password fields.
+   * @returns {boolean} - Returns true if passwords match, otherwise false.
+   */
+  checkPasswordsMatch(ngForm: NgForm): boolean {
+    if (this.password !== this.passwordRepeat) {
+      const passwordControl = ngForm.controls['password'];
+      const passwordRepeatControl = ngForm.controls['passwordRepeat'];
+      if (passwordControl) passwordControl.setErrors({ mismatch: true });
+      if (passwordRepeatControl)
+        passwordRepeatControl.setErrors({ mismatch: true });
+      return false;
+    }
+    return true;
+  }
+
+  /**
    * Handles the form submission.
    *
    * @param {NgForm} ngForm - The form object that contains the signup data to be submitted.
@@ -50,14 +97,25 @@ export class PageSignupComponent {
     console.log('Signup is done');
   }
 
+  /**
+   * Advances the signup process to the next step.
+   */
   setNextSignupStep() {
     this.isSignupStep += 1;
   }
 
+  /**
+   * Moves the signup process back to the previous step.
+   */
   setPreviousSignupStep() {
     this.isSignupStep -= 1;
   }
 
+  /**
+   * Sets the selected avatar to the given ID.
+   *
+   * @param {number} id - The ID of the avatar to select.
+   */
   setSelectedAvatarTo(id: number) {
     this.selectedAvatar = id;
   }
