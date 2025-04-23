@@ -37,7 +37,7 @@
 }
 
 .confirm-container-login{
-    @include setFlex($jc:flex-end);
+    @include setFlex($jc:flex-end, $gap:8px) ;
 }
 
 .signup-contact-avatar-container{

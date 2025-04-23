@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../_shared/services/user.service';
 
 @Component({
   selector: 'app-page-login',
@@ -29,6 +30,7 @@ import { RouterLink } from '@angular/router';
 })
 export class PageLoginComponent {
   authService = inject(AuthenticationService);
+  userService = inject(UserService);
   email: string = '';
   password: string = '';
 

@@ -4,4 +4,7 @@ export interface User {
   lastName: string;
   fullName: string;
   email: string;
+  avatarId: number;
+  isloggedIn: boolean;
+  uid: string;
 }

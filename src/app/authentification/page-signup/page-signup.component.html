@@ -13,7 +13,7 @@
                                 <mat-form-field class="width-100 std-form-field">
                                     <mat-label>Vorname</mat-label>
                                     <mat-icon matPrefix>person</mat-icon>
-                                    <input type="text" matInput name="firstName" [(ngModel)]="firstName"
+                                    <input type="text" matInput name="firstName" [(ngModel)]="userToSignup.firstName"
                                         #firstNameInput="ngModel" placeholder="Max" required>
                                     @if (firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)) {
                                     <mat-error>
@@ -24,7 +24,7 @@
                                 <mat-form-field class="width-100 std-form-field">
                                     <mat-label>Nachname</mat-label>
                                     <mat-icon matPrefix>person</mat-icon>
-                                    <input type="text" matInput name="lastName" [(ngModel)]="lastName"
+                                    <input type="text" matInput name="lastName" [(ngModel)]="userToSignup.lastName"
                                         #lastNameInput="ngModel" placeholder="Mustermann" required>
                                     @if (lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)) {
                                     <mat-error>
@@ -36,8 +36,8 @@
                             <mat-form-field class="width-100 std-form-field">
                                 <mat-label>Email</mat-label>
                                 <mat-icon matPrefix>email</mat-icon>
-                                <input type="email" matInput name="email" [(ngModel)]="email" #emailInput="ngModel"
-                                    placeholder="beispielname@email.de" required
+                                <input type="email" matInput name="email" [(ngModel)]="userToSignup.email"
+                                    #emailInput="ngModel" placeholder="beispielname@email.de" required
                                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
                                 @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
                                 <mat-error>
@@ -80,8 +80,9 @@
                             </mat-form-field>
                         </div>
                         <div class="confirm-container-login">
-                            <button mat-flat-button class="primaryBtn" color="primary" type="submit" value="Send"
-                                (click)="confirmContactData(formSignup)">Weiter</button>
+                            <p>Schritt: 1/2</p>
+                            <button mat-flat-button class="primaryBtn" color="primary" type="submit"
+                                value="confirmContactData" (click)="confirmContactData(formSignup)">Weiter</button>
                         </div>
                     </div>
                     <div class="signup-contact-avatar-container" [ngClass]="{'d_none':isSignupStep!=2}">
@@ -90,7 +91,7 @@
                         <div class="selected-avatar">
                             <img src="./assets/img/character{{selectedAvatar}}.svg" alt="character">
                         </div>
-                        <p class="full-name">Marco Nawroth</p>
+                        <p class="full-name">{{userToSignup.fullName}}</p>
                         <p class="text-avatar">Aus der Liste wählen</p>
                         <div class="select-avatar-container">
                             <div class="select-avatar" (click)="setSelectedAvatarTo(1)">
@@ -113,8 +114,9 @@
                             </div>
                         </div>
                         <div class="confirm-container-login">
+                            <p>Schritt: 2/2</p>
                             <button mat-flat-button class="primaryBtn" color="primary" type="button"
-                                value="Send">Weiter</button>
+                                value="confirmSignup" (click)="saveUser()">Save User</button>
                         </div>
                     </div>
                 </form>

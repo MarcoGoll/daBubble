@@ -10,6 +10,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../_shared/services/user.service';
+import { User } from '../../_shared/interfaces/user';
 
 @Component({
   selector: 'app-page-signup',
@@ -31,13 +33,20 @@ import { CommonModule } from '@angular/common';
 })
 export class PageSignupComponent {
   authService = inject(AuthenticationService);
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
+  userService = inject(UserService);
   password: string = '';
   passwordRepeat: string = '';
   isSignupStep: number = 1;
   selectedAvatar: number = 1;
+  userToSignup: User = {
+    firstName: '',
+    lastName: '',
+    fullName: '',
+    email: '',
+    avatarId: 1,
+    isloggedIn: false,
+    uid: '',
+  };
 
   constructor() {
     this.isSignupStep = 1;
@@ -51,11 +60,21 @@ export class PageSignupComponent {
   confirmContactData(ngForm: NgForm) {
     this.markControlsAsTouched(ngForm);
     if (!this.checkPasswordsMatch(ngForm)) {
-      return;
+      return; // Stops at PW missmatch
     }
     if (ngForm.valid) {
+      this.setUserToSignupFullName();
       this.setNextSignupStep();
     }
+  }
+
+  /**
+   * Sets the full name of the user to sign up by concatenating
+   * their first and last names with a space in between.
+   */
+  setUserToSignupFullName() {
+    this.userToSignup.fullName =
+      this.userToSignup.firstName + ' ' + this.userToSignup.lastName;
   }
 
   /**
@@ -118,5 +137,12 @@ export class PageSignupComponent {
    */
   setSelectedAvatarTo(id: number) {
     this.selectedAvatar = id;
+    this.userToSignup.avatarId = id;
+  }
+
+  saveUser() {
+    this.authService.createUser(this.userToSignup.email, this.password);
+    this.authService.updateUser(this.userToSignup.fullName);
+    this.userService.createUser();
   }
 }
