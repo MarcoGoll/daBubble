@@ -11,6 +11,7 @@ import {
 } from 'firebase/auth';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 const googleAuthProvider = new GoogleAuthProvider();
 
 @Injectable({
@@ -19,6 +20,7 @@ const googleAuthProvider = new GoogleAuthProvider();
 export class AuthenticationService {
   router = inject(Router);
   auth = inject(Auth);
+  userService = inject(UserService);
 
   isUserLoggedIn: boolean = false;
   currentLoggedInUser: User | null = null;
@@ -48,6 +50,7 @@ export class AuthenticationService {
     await createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
         // Signed up
+        this.userService.uidToBeSet = userCredential.user.uid;
         this.resetFirebaseError();
         // ...
       })

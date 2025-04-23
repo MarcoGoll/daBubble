@@ -10,7 +10,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../_shared/services/user.service';
+import { UserService } from '../../_shared/services/firebase/user.service';
 import { User } from '../../_shared/interfaces/user';
 
 @Component({
@@ -113,7 +113,7 @@ export class PageSignupComponent {
    * @param {NgForm} ngForm - The form object that contains the signup data to be submitted.
    */
   onSubmit(ngForm: NgForm) {
-    console.log('Signup is done');
+    console.log('Kann die FUNKTION gelöscht werden?');
   }
 
   /**
@@ -140,9 +140,12 @@ export class PageSignupComponent {
     this.userToSignup.avatarId = id;
   }
 
-  saveUser() {
-    this.authService.createUser(this.userToSignup.email, this.password);
-    this.authService.updateUser(this.userToSignup.fullName);
-    this.userService.createUser();
+  async saveUser() {
+    await this.authService.createUser(this.userToSignup.email, this.password);
+    await this.authService.updateUser(this.userToSignup.fullName);
+    await this.userService.createUser(this.userToSignup); //TODO: create User logic
+    //TODO: Confirmationmessage
+    //TODO: Reset Form / Variables
+    //TODO: Redirect to LoginPage
   }
 }

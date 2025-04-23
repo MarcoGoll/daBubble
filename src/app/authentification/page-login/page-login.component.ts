@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../../_shared/services/user.service';
+import { UserService } from '../../_shared/services/firebase/user.service';
 
 @Component({
   selector: 'app-page-login',
