@@ -10,6 +10,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../_shared/services/firebase/user.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-page-login',
@@ -23,6 +24,7 @@ import { UserService } from '../../_shared/services/firebase/user.service';
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
+    MatSnackBarModule,
     RouterLink,
   ],
   templateUrl: './page-login.component.html',
@@ -46,10 +48,24 @@ export class PageLoginComponent {
    */
   onSubmit(ngForm: NgForm) {
     console.log('Submit is done');
+    this.markControlsAsTouched(ngForm);
+    this.authService.login(this.email, this.password);
   }
 
   submitAsGuest() {
     console.log('Submit as guest is done');
     this.authService.login(this.GUESTUSER.email, this.GUESTUSER.pw);
+  }
+
+  /**
+   * Marks all form controls as touched to trigger validation messages.
+   *
+   * @param {NgForm} ngForm - The form object whose controls should be marked as touched.
+   */
+  markControlsAsTouched(ngForm: NgForm) {
+    // Mark all controls as touched to trigger validation messages
+    Object.values(ngForm.controls).forEach((control) => {
+      control.markAsTouched();
+    });
   }
 }

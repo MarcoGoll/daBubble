@@ -38,6 +38,10 @@
 
 .confirm-container-login{
     @include setFlex($jc:flex-end, $gap:8px) ;
+    p{
+        font-size: $fsTertiary;
+        font-style: italic;
+    }
 }
 
 .signup-contact-avatar-container{

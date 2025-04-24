@@ -8,10 +8,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../_shared/services/firebase/user.service';
 import { User } from '../../_shared/interfaces/user';
+import { GlobalMessagesService } from '../../_shared/services/global-messages.service';
 
 @Component({
   selector: 'app-page-signup',
@@ -34,6 +35,7 @@ import { User } from '../../_shared/interfaces/user';
 export class PageSignupComponent {
   authService = inject(AuthenticationService);
   userService = inject(UserService);
+  globalMessageService = inject(GlobalMessagesService);
   password: string = '';
   passwordRepeat: string = '';
   isSignupStep: number = 1;
@@ -48,7 +50,7 @@ export class PageSignupComponent {
     uid: '',
   };
 
-  constructor() {
+  constructor(private router: Router) {
     this.isSignupStep = 1;
   }
 
@@ -108,15 +110,6 @@ export class PageSignupComponent {
   }
 
   /**
-   * Handles the form submission.
-   *
-   * @param {NgForm} ngForm - The form object that contains the signup data to be submitted.
-   */
-  onSubmit(ngForm: NgForm) {
-    console.log('Kann die FUNKTION gelöscht werden?');
-  }
-
-  /**
    * Advances the signup process to the next step.
    */
   setNextSignupStep() {
@@ -140,12 +133,17 @@ export class PageSignupComponent {
     this.userToSignup.avatarId = id;
   }
 
-  async saveUser() {
+  async saveUser(ngForm: NgForm) {
     await this.authService.createUser(this.userToSignup.email, this.password);
     await this.authService.updateUser(this.userToSignup.fullName);
-    await this.userService.createUser(this.userToSignup); //TODO: create User logic
-    //TODO: Confirmationmessage
-    //TODO: Reset Form / Variables
-    //TODO: Redirect to LoginPage
+    await this.userService.createUser(this.userToSignup);
+    this.globalMessageService.showSnackbarNotification(
+      'Der Nutzer wurde erfolgreich angelegt.',
+      '',
+      'success'
+    );
+    ngForm.resetForm();
+    await this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

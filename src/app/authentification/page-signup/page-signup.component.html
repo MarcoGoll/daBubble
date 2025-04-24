@@ -3,7 +3,8 @@
     <main id="main-signup">
         <div id="main-signup-content" class="content-limit">
             <mat-card id="signup-container" appearance="raised">
-                <form id="form-signup" class="form-signup" (ngSubmit)="onSubmit(formSignup)" #formSignup="ngForm">
+                <form id="form-signup" class="form-signup" (ngSubmit)="confirmContactData(formSignup)"
+                    #formSignup="ngForm">
                     <div class="signup-contact-data-container" [ngClass]="{'d_none':isSignupStep!=1}">
                         <a routerLink="/login">back</a>
                         <h1>Konto erstellen</h1>
@@ -38,7 +39,7 @@
                                 <mat-icon matPrefix>email</mat-icon>
                                 <input type="email" matInput name="email" [(ngModel)]="userToSignup.email"
                                     #emailInput="ngModel" placeholder="beispielname@email.de" required
-                                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                                    pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$">
                                 @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
                                 <mat-error>
                                     Bitte gib eine gültige E-Mail-Adresse ein.
@@ -80,9 +81,9 @@
                             </mat-form-field>
                         </div>
                         <div class="confirm-container-login">
-                            <p>Schritt: 1/2</p>
+                            <p>Schritt: 1 / 2</p>
                             <button mat-flat-button class="primaryBtn" color="primary" type="submit"
-                                value="confirmContactData" (click)="confirmContactData(formSignup)">Weiter</button>
+                                value="confirmContactData">Weiter</button>
                         </div>
                     </div>
                     <div class="signup-contact-avatar-container" [ngClass]="{'d_none':isSignupStep!=2}">
@@ -114,9 +115,9 @@
                             </div>
                         </div>
                         <div class="confirm-container-login">
-                            <p>Schritt: 2/2</p>
+                            <p>Schritt: 2 / 2</p>
                             <button mat-flat-button class="primaryBtn" color="primary" type="button"
-                                value="confirmSignup" (click)="saveUser()">Save User</button>
+                                value="confirmSignup" (click)="saveUser(formSignup)">Save User</button>
                         </div>
                     </div>
                 </form>

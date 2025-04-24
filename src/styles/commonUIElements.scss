@@ -94,3 +94,40 @@
         border: 1px solid $clrBaseDarkTransparent02;
     }
 }
+
+//Snackbar
+.snackbar-success.mat-mdc-snack-bar-container .mdc-snackbar__surface{
+    background-color: #41a145; 
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.snackbar-error.mat-mdc-snack-bar-container .mdc-snackbar__surface{
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.snackbar-info.mat-mdc-snack-bar-container .mdc-snackbar__surface{
+    background-color: #3652f4;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.snackbar-warn.mat-mdc-snack-bar-container .mdc-snackbar__surface{
+    background-color: #918e05;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.snackbar-default.mat-mdc-snack-bar-container .mdc-snackbar__surface{
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+

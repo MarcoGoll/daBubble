@@ -12,7 +12,7 @@
                             <mat-icon matPrefix>email</mat-icon>
                             <input type="email" matInput name="email" [(ngModel)]="email" #emailInput="ngModel"
                                 placeholder="beispielname@email.de" required
-                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                                pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$">
                             @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
                             <mat-error>
                                 Bitte gib eine gültige E-Mail-Adresse ein.
