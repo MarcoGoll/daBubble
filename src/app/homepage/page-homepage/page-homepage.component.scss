@@ -1,0 +1,26 @@
+@import './../../../styles.scss';
+
+#app-page-homepage{
+    min-height: 100svh;
+    @include setFlex($fd:column, $jc:space-between, $ai:stretch);
+}
+
+.main-homepage-content{
+    flex: 1;
+    @include setFlex();
+}
+
+app-conversation-list{
+    flex: 1;
+    background-color: green;
+}
+
+app-conversation-view{
+    flex: 3;
+    background-color: blue;
+}
+
+app-thread-detail{
+    flex: 2;
+    background-color: red;
+}
