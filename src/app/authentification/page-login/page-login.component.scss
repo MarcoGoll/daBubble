@@ -17,6 +17,7 @@
 #login-container{
     width: clamp(280px, 100%, 600px);
     @include setFlex($fd:column, $jc:space-between, $ai:stretch, $gap:24px);
+    padding: 60px;
     h1,p{
         text-align: center;
     }

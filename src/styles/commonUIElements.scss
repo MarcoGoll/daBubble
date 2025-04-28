@@ -3,8 +3,8 @@
 
 // Standard Card
 .mat-mdc-card.mdc-card{
-    border-radius: 30px;
-    padding: 60px;
+    border-radius: $stdRadiusCard;
+    padding: $stdRadiusCard;
 }
 
 // Standard Input - general + hover => to use set class="std-form-field" at <mat-form-field>-Element

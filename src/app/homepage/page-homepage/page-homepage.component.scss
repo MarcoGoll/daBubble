@@ -3,11 +3,12 @@
 #app-page-homepage{
     min-height: 100svh;
     @include setFlex($fd:column, $jc:space-between, $ai:stretch);
+    background-color: $clrHighlight1;
 }
 
 .main-homepage-content{
     flex: 1;
-    @include setFlex();
+    @include setFlex($ai:stretch);
 }
 
 app-conversation-list{

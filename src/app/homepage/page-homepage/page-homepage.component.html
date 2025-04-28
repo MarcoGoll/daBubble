@@ -1,16 +1,6 @@
-<p>page-homepage works!</p>
-<div class="control-app-btn-container">
-    <p>Aktueller Nutzer: {{authService.currentLoggedInUser?.displayName}}</p>
-    <button class="control-app-btn" (click)="authService.logout()">Logout</button>
-    <!-- TODO: Component: Header-->
-    <!-- TODO: Component: Messages-->
-    <!-- TODO: Component: conversationList-->
-    <!-- TODO: Component: MessagesTreats -->
-    <!-- TODO: Component: Footer-->
-</div>
 <div id="app-page-homepage">
     <app-header></app-header>
-    <div class="main-homepage-content">
+    <div class="main-homepage-content content-limit">
         <app-conversation-list></app-conversation-list>
         <app-conversation-view></app-conversation-view>
         <app-thread-detail></app-thread-detail>

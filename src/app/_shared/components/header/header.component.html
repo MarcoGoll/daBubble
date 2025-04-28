@@ -1,1 +1,4 @@
-<p>header works!</p>
+<div class="control-app-btn-container">
+    <p>Aktueller Nutzer: {{authService.currentLoggedInUser?.displayName}}</p>
+    <button class="control-app-btn" (click)="authService.logout()">Logout</button>
+</div>

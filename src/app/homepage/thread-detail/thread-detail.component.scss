@@ -1,0 +1,20 @@
+@import './../../../styles.scss';
+
+#app-thread-detail{
+    height: 100%;
+}
+
+#section-thread-detail{
+    height: 100%;
+}
+
+#section-thread-detail-content{
+    height: 100%;
+    padding: 8px;
+}
+
+#thread-detail-container{
+    height: 100%;
+    @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
+
+}
