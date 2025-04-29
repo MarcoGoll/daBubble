@@ -12,16 +12,13 @@
 }
 
 app-conversation-list{
-    flex: 1;
-    background-color: green;
+    flex: 2;
 }
 
 app-conversation-view{
-    flex: 4;
-    background-color: blue;
+    flex: 3.5;
 }
 
 app-thread-detail{
     flex: 1.5;
-    background-color: red;
 }

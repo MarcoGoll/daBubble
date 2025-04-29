@@ -16,5 +16,45 @@
 #conversation-list-container{
     height: 100%;
     @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
+}
 
+.headline-container{
+    @include setFlex($gap:8px);
+    
+    img{
+        width: 60px;
+        height: 60px;
+    }
+
+    h2{
+        flex: 1;
+    }
+    
+    // $size:42px;
+    // .icon-button-edit{
+    //     transition: $stdTransition;
+    //     --mat-icon-button-touch-target-display: none;
+    //     @include setFlex();        
+    //     padding: 0;
+    //     height: $size;
+    //     width: $size;
+    //     min-width: $size;
+    //     min-height: $size;
+    //     max-width: $size;
+    //     max-height: $size;
+       
+    //     &:hover {
+    //         background-color: $clrHighlight1;
+    //         svg{
+    //             path{
+    //                 fill: $clrHighlight2Brighter2;
+    //             };
+    //         }
+    //     }
+    // }
+
+    // ::ng-deep .icon-button-edit .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
+    //     height: $size ;
+    //     width: $size ;
+    //   }
 }

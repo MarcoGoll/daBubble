@@ -85,6 +85,34 @@
     }
 }
 
+$size:42px;
+.icon-button{
+    transition: $stdTransition;
+    --mat-icon-button-touch-target-display: none;
+    @include setFlex();        
+    padding: 0;
+    height: $size;
+    width: $size;
+    min-width: $size;
+    min-height: $size;
+    max-width: $size;
+    max-height: $size;
+   
+    &:hover {
+        background-color: $clrHighlight1;
+        svg{
+            path{
+                fill: $clrHighlight2Brighter2;
+            };
+        }
+    }
+}
+
+::ng-deep .icon-button .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
+    height: $size ;
+    width: $size ;
+  }
+
 // Seperator
 .horizontal-seperator-container{
     @include setFlex($gap: 16px);
