@@ -72,6 +72,7 @@ export class AuthenticationService {
         // Signed in
         this.isUserLoggedIn = true;
         this.currentLoggedInUser = userCredential.user;
+        this.setUserLoginStatus(this.currentLoggedInUser.uid, true);
         this.router.navigate(['/']);
         console.log('This user was logged in: ', userCredential.user);
 
@@ -89,6 +90,9 @@ export class AuthenticationService {
    * @returns {Promise<void>} A promise that resolves when the user is logged out or rejects if an error occurs.
    */
   async logout() {
+    if (this.currentLoggedInUser) {
+      this.setUserLoginStatus(this.currentLoggedInUser.uid, false);
+    }
     await signOut(this.auth)
       .then(() => {
         // Signed out
@@ -134,7 +138,7 @@ export class AuthenticationService {
    * @param {string} fullName - The new full name to set as the user's display name.
    * @returns {Promise<void>} A promise that resolves when the profile is successfully updated or rejects if an error occurs.
    */
-  async updateUser(fullName: string) {
+  async updateUserFullName(fullName: string) {
     const user: User | null = this.auth.currentUser;
     if (user) {
       await updateProfile(user, {
@@ -181,6 +185,22 @@ export class AuthenticationService {
         // ...
         this.setFirebaseError(error);
       });
+  }
+
+  // ##########################################################################################################
+  // Statushandling
+  // ##########################################################################################################
+  setUserLoginStatus(userUid: string, loggedIn: boolean) {
+    const foundedUser = this.userService.users.find(
+      (user) => user.uid === userUid
+    );
+    if (foundedUser) {
+      foundedUser.isloggedIn = loggedIn;
+      this.userService.updateUser(foundedUser);
+      console.log('foundUser: ', foundedUser);
+    } else {
+      console.warn('Found no user with this uid.');
+    }
   }
 
   // ##########################################################################################################

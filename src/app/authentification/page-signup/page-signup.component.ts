@@ -135,7 +135,7 @@ export class PageSignupComponent {
 
   async saveUser(ngForm: NgForm) {
     await this.authService.createUser(this.userToSignup.email, this.password);
-    await this.authService.updateUser(this.userToSignup.fullName);
+    await this.authService.updateUserFullName(this.userToSignup.fullName);
     await this.userService.createUser(this.userToSignup);
     this.globalMessageService.showSnackbarNotification(
       'Der Nutzer wurde erfolgreich angelegt.',

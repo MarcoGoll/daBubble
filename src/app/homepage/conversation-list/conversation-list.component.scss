@@ -84,3 +84,41 @@
       width: $size-icon-button-small ;
     }
   
+
+    .users{
+      @include setFlex($fd:column, $jc:flex-start, $ai:stretch,$gap:8px)
+    }
+
+    .user{
+      @include setFlex($jc:flex-start, $gap:8px);
+      
+      .user-avatar{
+      position: relative;
+
+        img{
+          width: 64px;
+          min-width: 64px;
+          max-width: 64px;;
+          aspect-ratio: 1/1;
+          border-radius: 100px;
+        }
+
+        .online-status{
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+          border-radius: 100px;
+          padding: 6px;
+          border: 2px solid $clrBaseBright;    
+        }
+      }
+
+      p{}
+    }
+
+    .status-online{
+      background-color: $clrOnline;
+    }
+    .status-offline{
+      background-color: $clrOffline;;
+    }

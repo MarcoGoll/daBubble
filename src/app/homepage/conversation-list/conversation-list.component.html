@@ -22,7 +22,7 @@
                                     <div class="my-panel-title">
                                         <mat-icon class="arrow-icon"
                                             [ngClass]="{'rotated': panelOpenStateChannels() }">expand_more</mat-icon>
-                                        <h2>Channels</h2>
+                                        <h3>Channels</h3>
                                     </div>
                                     <button (click)="$event.stopPropagation();" class="icon-button-small"
                                         mat-icon-button matTooltipPosition="above" matTooltip="TBD">
@@ -48,11 +48,23 @@
                                     <div class="my-panel-title">
                                         <mat-icon class="arrow-icon"
                                             [ngClass]="{'rotated': panelOpenStateUser() }">expand_more</mat-icon>
-                                        <h2>Direktnachrichten</h2>
+                                        <h3>Direktnachrichten</h3>
                                     </div>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <p>I'm visible because I am open</p>
+                            <div class="users">
+                                @for (user of userService.users; track $index) {
+                                <div class="user">
+                                    <div class="user-avatar">
+                                        <img src="./assets/img/character{{user.avatarId}}.svg" alt="User Avatar">
+                                        <div class="online-status"
+                                            [ngClass]="{'status-online': user.isloggedIn , 'status-offline': !user.isloggedIn}">
+                                        </div>
+                                    </div>
+                                    <span>{{user.firstName}} {{user.lastName}}</span>
+                                </div>
+                                }
+                            </div>
                         </mat-expansion-panel>
                     </mat-accordion>
                 </div>
