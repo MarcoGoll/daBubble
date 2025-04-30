@@ -15,11 +15,11 @@
 
 #conversation-list-container{
     height: 100%;
-    @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
+    @include setFlex($fd: column, $jc:flex-start, $ai:stretch, $gap:16px);
 }
 
 .headline-container{
-    @include setFlex($gap:8px);
+    @include setFlex($jc:space-between, $gap:8px);
     
     img{
         width: 60px;
@@ -29,32 +29,58 @@
     h2{
         flex: 1;
     }
-    
-    // $size:42px;
-    // .icon-button-edit{
-    //     transition: $stdTransition;
-    //     --mat-icon-button-touch-target-display: none;
-    //     @include setFlex();        
-    //     padding: 0;
-    //     height: $size;
-    //     width: $size;
-    //     min-width: $size;
-    //     min-height: $size;
-    //     max-width: $size;
-    //     max-height: $size;
-       
-    //     &:hover {
-    //         background-color: $clrHighlight1;
-    //         svg{
-    //             path{
-    //                 fill: $clrHighlight2Brighter2;
-    //             };
-    //         }
-    //     }
-    // }
-
-    // ::ng-deep .icon-button-edit .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
-    //     height: $size ;
-    //     width: $size ;
-    //   }
 }
+
+.arrow-icon {
+    transition: transform 0.3s;
+  }
+  
+  .arrow-icon.rotated {
+    transform: rotate(180deg);
+  }
+
+  .mat-accordion .mat-expansion-panel{
+    box-shadow: none;
+  }
+
+  .mat-expansion-panel-header{
+    padding: 0;
+  }
+
+  .mat-expansion-panel-header-title{
+    justify-content: space-between;
+    margin: 0;
+  }
+  
+  .my-panel-title{
+    @include setFlex($gap:8px);
+  }
+
+  $size-icon-button-small:32px;
+  .icon-button-small{
+      transition: $stdTransition;
+      --mat-icon-button-touch-target-display: none;
+      @include setFlex();        
+      padding: 8px;
+      height: $size-icon-button-small;
+      width: $size-icon-button-small;
+      min-width: $size-icon-button-small;
+      min-height: $size-icon-button-small;
+      max-width: $size-icon-button-small;
+      max-height: $size-icon-button-small;
+     
+      &:hover {
+          background-color: $clrHighlight1;
+          svg{
+              path{
+                  fill: $clrHighlight2Brighter2;
+              };
+          }
+      }
+  }
+  
+  ::ng-deep .icon-button .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
+      height: $size-icon-button-small ;
+      width: $size-icon-button-small ;
+    }
+  

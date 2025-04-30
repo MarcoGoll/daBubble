@@ -85,18 +85,18 @@
     }
 }
 
-$size:42px;
+$size-icon-button:42px;
 .icon-button{
     transition: $stdTransition;
     --mat-icon-button-touch-target-display: none;
     @include setFlex();        
-    padding: 0;
-    height: $size;
-    width: $size;
-    min-width: $size;
-    min-height: $size;
-    max-width: $size;
-    max-height: $size;
+    padding: 8px;
+    height: $size-icon-button;
+    width: $size-icon-button;
+    min-width: $size-icon-button;
+    min-height: $size-icon-button;
+    max-width: $size-icon-button;
+    max-height: $size-icon-button;
    
     &:hover {
         background-color: $clrHighlight1;
@@ -109,8 +109,8 @@ $size:42px;
 }
 
 ::ng-deep .icon-button .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
-    height: $size ;
-    width: $size ;
+    height: $size-icon-button ;
+    width: $size-icon-button ;
   }
 
 // Seperator
