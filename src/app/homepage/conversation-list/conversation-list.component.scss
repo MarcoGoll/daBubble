@@ -45,6 +45,21 @@
 
   .mat-expansion-panel-header{
     padding: 0;
+    &:hover{
+      background-color: transparent !important;
+    }
+
+    &:hover:not(:has(.icon-button-small:hover)){
+      svg:not(.btnSVG){
+        path{
+          fill: $clrHighlight2;
+        }
+      }
+  
+      h3{
+        color: $clrHighlight2;
+      }
+    }
   }
 
   .mat-expansion-panel-header-title{
@@ -54,6 +69,7 @@
   
   .my-panel-title{
     @include setFlex($gap:8px);
+   
   }
 
   $size-icon-button-small:32px;
@@ -84,14 +100,22 @@
       width: $size-icon-button-small ;
     }
   
+  ::ng-deep .mat-expansion-panel-body {
+     padding: 0 !important;
+  }
+  
 
     .users{
-      @include setFlex($fd:column, $jc:flex-start, $ai:stretch,$gap:8px)
+      @include setFlex($fd:column, $jc:flex-start, $ai:stretch,$gap:8px);
+    
     }
 
     .user{
       @include setFlex($jc:flex-start, $gap:8px);
-      
+      cursor: pointer;
+      padding: 4px 20px;
+      border-radius: 30px;
+
       .user-avatar{
       position: relative;
 
@@ -112,13 +136,24 @@
           border: 2px solid $clrBaseBright;    
         }
       }
+        
+      &:hover{
+        background-color: $clrHighlight1;
+      }
 
-      p{}
+      &:active{
+        span{
+          color: $clrHighlight2;
+          font-weight: 700;
+        }
+      }
     }
 
     .status-online{
       background-color: $clrOnline;
     }
     .status-offline{
-      background-color: $clrOffline;;
+      background-color: $clrOffline;
     }
+
+ 
