@@ -107,7 +107,9 @@
 
     .users{
       @include setFlex($fd:column, $jc:flex-start, $ai:stretch,$gap:8px);
-    
+      span{
+        font-size: $fsDefault;
+      }
     }
 
     .user{
@@ -156,4 +158,55 @@
       background-color: $clrOffline;
     }
 
- 
+    .channels{
+      @include setFlex($fd:column, $ai:flex-start, $gap:16px);
+      padding: 16px 0;
+      span{
+        font-size: $fsDefault;
+      }
+    }
+
+    .channel, .channelAddBtn{
+      @include setFlex($jc:flex-start, $gap:8px);
+      padding: 4px 20px;
+      cursor: pointer;
+    }
+
+    .channel{
+      border-radius: 20px;
+      &:hover{
+        background-color: $clrHighlight1;
+        svg{
+          path{
+            fill: $clrHighlight2;
+          }
+        }
+      }
+      
+      &:active{
+        span{
+          font-weight: 700;
+          color: $clrHighlight2;
+        }        
+      }
+    }
+
+    .channelAddBtn{
+      margin-top: 16px;
+      &:hover{
+        span{
+          color: $clrHighlight2;
+        }
+        svg{
+          path{
+            fill: $clrHighlight2;
+          }
+        }
+      }
+
+      &:active{
+        span{
+          color: $clrBaseDark;
+        }
+      }
+    }
