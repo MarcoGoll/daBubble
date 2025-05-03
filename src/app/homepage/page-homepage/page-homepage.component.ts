@@ -21,4 +21,9 @@ import { ThreadDetailComponent } from '../thread-detail/thread-detail.component'
 })
 export class PageHomepageComponent {
   authService = inject(AuthenticationService);
+  isMenueOpen: boolean = false;
+
+  toggleIsMenueOpen() {
+    this.isMenueOpen = !this.isMenueOpen;
+  }
 }

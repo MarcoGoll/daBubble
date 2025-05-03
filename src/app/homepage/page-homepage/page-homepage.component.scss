@@ -22,3 +22,29 @@ app-conversation-view{
 app-thread-detail{
     flex: 1.5;
 }
+
+.toggle-conversation-list-btn{
+    @include setFlex($gap:8px);
+    position: absolute;
+    top: 80%;
+    left: 0;
+    z-index: 99;
+    padding: 10px 20px;
+    background-color: $clrBaseBright;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(-80%) rotate(-90deg);
+    transform-origin: top left;
+
+    svg{
+        transform: rotate(90deg);
+    }
+
+    &:hover{
+        color: $clrHighlight2;
+        svg *{
+            stroke: $clrHighlight2;
+        }
+    }
+}
