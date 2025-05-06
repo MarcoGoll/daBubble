@@ -83,6 +83,7 @@ export class UserService {
       fullName: obj.fullName || '',
       email: obj.email || '',
       avatarId: obj.avatarId || 1,
+      channelIds: obj.channelIds || [],
       isloggedIn: obj.isloggedIn || false,
       uid: obj.uid || '',
     };

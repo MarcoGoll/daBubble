@@ -5,6 +5,7 @@ export interface User {
   fullName: string;
   email: string;
   avatarId: number;
+  channelIds: string[];
   isloggedIn: boolean;
   uid: string;
 }

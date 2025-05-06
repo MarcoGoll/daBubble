@@ -46,6 +46,7 @@ export class PageSignupComponent {
     fullName: '',
     email: '',
     avatarId: 1,
+    channelIds: [],
     isloggedIn: false,
     uid: '',
   };
