@@ -16,6 +16,8 @@ import { AuthenticationService } from '../../_shared/services/firebase/authentic
 import { GlobalAdjustmentsService } from '../../_shared/services/global-adjustments.service';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
 import { Channel } from '../../_shared/interfaces/channel';
+import { ConversationService } from '../../_shared/services/firebase/conversation.service';
+import { Conversation } from '../../_shared/interfaces/conversation';
 
 @Component({
   selector: 'app-conversation-list',
@@ -35,15 +37,20 @@ export class ConversationListComponent implements OnInit {
   authService = inject(AuthenticationService);
   userService = inject(UserService);
   channelService = inject(ChannelService);
+  conversationService = inject(ConversationService);
   globalAdjustmentsService = inject(GlobalAdjustmentsService);
 
   readonly panelOpenStateChannels = signal(false);
   readonly panelOpenStateUser = signal(false);
 
   channelToCreate: Channel = {
-    name: '',
+    name: 'TestChannel',
     description: '',
     members: [],
+  };
+  conversationToCreate: Conversation = {
+    messageBlock: { messages: [] },
+    type: 'channel',
   };
 
   ngOnInit() {
@@ -62,7 +69,11 @@ export class ConversationListComponent implements OnInit {
     }
   }
 
-  createChannel() {
-    // this.channelService.createChannel(this.channelToCreate);
+  async createChannel() {
+    await this.channelService.createChannel(this.channelToCreate);
+    this.conversationToCreate.channelId = this.channelToCreate.id;
+    await this.conversationService.createConversation(
+      this.conversationToCreate
+    );
   }
 }

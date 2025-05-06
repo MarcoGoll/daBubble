@@ -38,7 +38,7 @@ export class ChannelService {
    * @returns {Function} Unsubscribe function to stop listening for updates.
    */
   subChannelsList() {
-    const q = query(this.getChannelsRef(), orderBy('firstName'));
+    const q = query(this.getChannelsRef(), orderBy('name'));
     return onSnapshot(q, (list) => {
       this.channels = [];
       list.forEach((channel) => {
