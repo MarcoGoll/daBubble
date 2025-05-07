@@ -19,7 +19,7 @@ app-conversation-list{
 }
 
 app-conversation-view{
-    flex: 3.5;
+    flex: 4;
 }
 
 app-thread-detail{
@@ -54,7 +54,7 @@ app-thread-detail{
 }
 
 app-conversation-list.open {
-    flex:2
+    flex:2;
   }
   
   app-conversation-list.closed {
