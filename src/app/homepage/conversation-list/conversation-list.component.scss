@@ -72,37 +72,9 @@
    
   }
 
-  $size-icon-button-small:32px;
-  .icon-button-small{
-      transition: $stdTransition;
-      --mat-icon-button-touch-target-display: none;
-      @include setFlex();        
-      padding: 8px;
-      height: $size-icon-button-small;
-      width: $size-icon-button-small;
-      min-width: $size-icon-button-small;
-      min-height: $size-icon-button-small;
-      max-width: $size-icon-button-small;
-      max-height: $size-icon-button-small;
-     
-      &:hover {
-          background-color: $clrHighlight1;
-          svg{
-              path{
-                  fill: $clrHighlight2Brighter2;
-              };
-          }
-      }
-  }
   
-  ::ng-deep .icon-button .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
-      height: $size-icon-button-small ;
-      width: $size-icon-button-small ;
-    }
   
-  ::ng-deep .mat-expansion-panel-body {
-     padding: 0 !important;
-  }
+
   
 
     .users{

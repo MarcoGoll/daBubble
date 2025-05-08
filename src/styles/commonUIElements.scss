@@ -108,10 +108,27 @@ $size-icon-button:42px;
     }
 }
 
-::ng-deep .icon-button .mat-mdc-button-touch-target { //::ng-deep is deprecated find other solution
-    height: $size-icon-button ;
-    width: $size-icon-button ;
-  }
+.icon-button-small{
+    transition: $stdTransition;
+    --mat-icon-button-touch-target-display: none;
+    @include setFlex();        
+    padding: 8px;
+    height: $size-icon-button-small;
+    width: $size-icon-button-small;
+    min-width: $size-icon-button-small;
+    min-height: $size-icon-button-small;
+    max-width: $size-icon-button-small;
+    max-height: $size-icon-button-small;
+   
+    &:hover {
+        background-color: $clrHighlight1;
+        svg{
+            path{
+                fill: $clrHighlight2Brighter2;
+            };
+        }
+    }
+}
 
 // Seperator
 .horizontal-seperator-container{
@@ -157,5 +174,10 @@ $size-icon-button:42px;
     color: white;
     font-weight: bold;
     text-align: center;
+}
+
+//Dialog
+.dialog{
+    padding: 32px;
 }
 

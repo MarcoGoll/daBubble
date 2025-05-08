@@ -68,3 +68,22 @@ html {
 .width-100{
     width: 100%;
 }
+
+//::ng-deep - Settings => ::ng-deep is deprecated find other solution
+::ng-deep .icon-button .mat-mdc-button-touch-target { 
+    height: $size-icon-button ;
+    width: $size-icon-button ;
+  }
+
+::ng-deep .mat-mdc-dialog-surface.mdc-dialog__surface{
+    border-radius: 30px;
+}
+
+::ng-deep .icon-button .mat-mdc-button-touch-target { 
+    height: $size-icon-button-small ;
+    width: $size-icon-button-small ;
+  }
+
+::ng-deep .mat-expansion-panel-body {
+   padding: 0 !important;
+}

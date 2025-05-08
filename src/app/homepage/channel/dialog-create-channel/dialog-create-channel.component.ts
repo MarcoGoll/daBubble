@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-dialog-create-channel',
@@ -18,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
+    MatTooltipModule,
   ],
   templateUrl: './dialog-create-channel.component.html',
   styleUrl: './dialog-create-channel.component.scss',
@@ -38,11 +42,20 @@ export class DialogCreateChannelComponent {
     type: 'channel',
   };
 
+  constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {}
+
   async createChannel(ngForm: NgForm) {
     await this.channelService.createChannel(this.channelToCreate);
     this.conversationToCreate.channelId = this.channelToCreate.id;
     await this.conversationService.createConversation(
       this.conversationToCreate
     );
+  }
+
+  /**
+   * Closes the dialogue
+   */
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

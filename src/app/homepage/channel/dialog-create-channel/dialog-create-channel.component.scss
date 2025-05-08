@@ -1,1 +1,29 @@
 @import './../../../../styles.scss';
+
+#dialog-create-channel{
+    @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:24px);
+    position: relative;
+}
+
+.confirm-container-create-channel{
+    justify-self: flex-end;
+}
+
+.control-btn-container{
+    @include setFlex();
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.dialog-text{
+    max-width: 50ch;
+}
+
+.form-create-channel{
+    padding-top: 24px;
+}
+
+.form-fields{
+    @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:8px)
+}
