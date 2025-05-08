@@ -11,13 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { GlobalAdjustmentsService } from '../../_shared/services/global-adjustments.service';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
-import { Channel } from '../../_shared/interfaces/channel';
-import { ConversationService } from '../../_shared/services/firebase/conversation.service';
-import { Conversation } from '../../_shared/interfaces/conversation';
+import { DialogCreateChannelComponent } from '../channel/dialog-create-channel/dialog-create-channel.component';
 
 @Component({
   selector: 'app-conversation-list',
@@ -27,6 +26,7 @@ import { Conversation } from '../../_shared/interfaces/conversation';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    MatDialogModule,
     MatExpansionModule,
     CommonModule,
   ],
@@ -37,21 +37,12 @@ export class ConversationListComponent implements OnInit {
   authService = inject(AuthenticationService);
   userService = inject(UserService);
   channelService = inject(ChannelService);
-  conversationService = inject(ConversationService);
   globalAdjustmentsService = inject(GlobalAdjustmentsService);
 
   readonly panelOpenStateChannels = signal(false);
   readonly panelOpenStateUser = signal(false);
 
-  channelToCreate: Channel = {
-    name: 'TestChannel',
-    description: '',
-    members: [],
-  };
-  conversationToCreate: Conversation = {
-    messageBlock: { messages: [] },
-    type: 'channel',
-  };
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -69,11 +60,11 @@ export class ConversationListComponent implements OnInit {
     }
   }
 
-  async createChannel() {
-    await this.channelService.createChannel(this.channelToCreate);
-    this.conversationToCreate.channelId = this.channelToCreate.id;
-    await this.conversationService.createConversation(
-      this.conversationToCreate
-    );
+  async openDialogCreateChannel() {
+    (document.activeElement as HTMLElement)?.blur(); // Entfernt Fokus vom aktiven Element
+    this.dialog.open(DialogCreateChannelComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+    });
   }
 }
