@@ -31,7 +31,6 @@ export class DialogCreateChannelComponent {
   conversationService = inject(ConversationService);
   channelName: string = '';
   channelDescription: string = '';
-
   channelToCreate: Channel = {
     name: 'TestChannel',
     description: '',
@@ -44,12 +43,43 @@ export class DialogCreateChannelComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {}
 
-  async createChannel(ngForm: NgForm) {
+  submitCreateChannel(ngForm: NgForm) {
+    ngForm.control.markAllAsTouched();
+    if (ngForm.invalid) {
+      return;
+    } else {
+      if (this.checkIsChannelAlreadyExisting(this.channelName)) {
+        ngForm.controls['channelName'].setErrors({
+          isDuplicateChannelName: true,
+        });
+      } else {
+        this.channelToCreate.name = this.channelName;
+        this.channelToCreate.description = this.channelDescription;
+        this.createChannel();
+        this.resetCreateChannel(ngForm);
+      }
+    }
+  }
+
+  checkIsChannelAlreadyExisting(channelName: string) {
+    return this.channelService.isChannelAlreadyExisting(channelName);
+  }
+
+  async createChannel() {
     await this.channelService.createChannel(this.channelToCreate);
+    this.createConversation();
+  }
+
+  async createConversation() {
     this.conversationToCreate.channelId = this.channelToCreate.id;
     await this.conversationService.createConversation(
       this.conversationToCreate
     );
+  }
+
+  resetCreateChannel(ngForm: NgForm) {
+    ngForm.resetForm();
+    this.closeDialog();
   }
 
   /**

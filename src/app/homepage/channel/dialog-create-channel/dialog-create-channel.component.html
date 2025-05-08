@@ -14,7 +14,7 @@
     <h3 class="dialog-headline">Channel erstellen</h3>
     <p class="dialog-text">Channels dienen deinem Team zur Kommunikation. Am Besten sollten sie themenbezogen
         sein.<br>Zum Beispiel: <b>#marketing</b></p>
-    <form id="form-create-channel" class="form-create-channel" (ngSubmit)="createChannel(formCreateChannel)"
+    <form id="form-create-channel" class="form-create-channel" (ngSubmit)="submitCreateChannel(formCreateChannel)"
         #formCreateChannel="ngForm">
         <div class="form-fields">
             <mat-form-field class="width-100 std-form-field">
@@ -29,7 +29,11 @@
                     placeholder="z.b. Marketing" required>
                 @if (channelNameInput.invalid && (channelNameInput.dirty || channelNameInput.touched)) {
                 <mat-error>
+                    @if (channelNameInput.hasError('isDuplicateChannelName')) {
+                    Ein Channel mit diesem Namen existiert bereits.
+                    }@else if (channelNameInput.hasError('required')){
                     Bitte gib ein Channel Namen ein.
+                    }
                 </mat-error>
                 }
             </mat-form-field>

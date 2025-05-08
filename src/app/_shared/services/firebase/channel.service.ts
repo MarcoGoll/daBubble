@@ -177,4 +177,12 @@ export class ChannelService {
         .then(() => {});
     }
   }
+
+  // ######## Validations ########
+  isChannelAlreadyExisting(channelName: string) {
+    return this.channels.some(
+      (channel) =>
+        channel.name.toLocaleLowerCase() === channelName.toLocaleLowerCase()
+    );
+  }
 }
