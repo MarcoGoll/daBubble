@@ -82,6 +82,7 @@ export class ChannelService {
       name: obj.name || '',
       description: obj.description || '',
       members: obj.members || [],
+      conversationId: obj.conversationId || '',
     };
   }
 

@@ -35,6 +35,7 @@ export class DialogCreateChannelComponent {
     name: 'TestChannel',
     description: '',
     members: [],
+    conversationId: '',
   };
   conversationToCreate: Conversation = {
     messageBlock: { messages: [] },

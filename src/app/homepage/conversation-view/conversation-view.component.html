@@ -2,6 +2,17 @@
     <section id="section-conversation-view">
         <div id="section-conversation-view-content">
             <mat-card id="conversation-view-container" appearance="raised">
+                <div class="conversation-view-messages">
+                    @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index)
+                    {
+                    <div class="conversation-view-message">
+                        {{message.timestamp}}
+                        {{message.sender}}
+                        {{message.text}}
+                    </div>
+                    }
+
+                </div>
             </mat-card>
         </div>
     </section>

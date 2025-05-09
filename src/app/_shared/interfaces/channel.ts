@@ -3,4 +3,5 @@ export interface Channel {
   name: string;
   description: string;
   members: string[];
+  conversationId: string;
 }

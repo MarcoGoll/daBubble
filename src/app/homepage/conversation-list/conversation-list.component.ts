@@ -17,6 +17,7 @@ import { AuthenticationService } from '../../_shared/services/firebase/authentic
 import { GlobalAdjustmentsService } from '../../_shared/services/global-adjustments.service';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
 import { DialogCreateChannelComponent } from '../channel/dialog-create-channel/dialog-create-channel.component';
+import { ConversationService } from '../../_shared/services/firebase/conversation.service';
 
 @Component({
   selector: 'app-conversation-list',
@@ -37,6 +38,7 @@ export class ConversationListComponent implements OnInit {
   authService = inject(AuthenticationService);
   userService = inject(UserService);
   channelService = inject(ChannelService);
+  conversationService = inject(ConversationService);
   globalAdjustmentsService = inject(GlobalAdjustmentsService);
 
   readonly panelOpenStateChannels = signal(false);

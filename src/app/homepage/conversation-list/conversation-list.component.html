@@ -50,7 +50,8 @@
                             </mat-expansion-panel-header>
                             <div class="channels">
                                 @for (channel of channelService.channels; track $index) {
-                                <div class="channel">
+                                <div class="channel"
+                                    (click)="conversationService.setCurrentConversation(channel.conversationId)">
                                     <svg width="18" height="16" viewBox="0 0 18 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

@@ -18,6 +18,24 @@ import { Conversation } from '../../interfaces/conversation';
 export class ConversationService {
   unsubConversations;
   conversations: Conversation[] = [];
+  private currentConversation: Conversation = {
+    id: '',
+    messageBlock: {
+      messages: [
+        {
+          timestamp: 1746791700000,
+          sender: 'Marco',
+          text: 'Hallo ich bin Marco',
+        },
+        {
+          timestamp: 1746791800000,
+          sender: 'Jürgen',
+          text: 'Hallo ich bin Jürgen',
+        },
+      ],
+    },
+    type: null,
+  };
   firestore: Firestore = inject(Firestore);
 
   /**
@@ -189,5 +207,25 @@ export class ConversationService {
         })
         .then(() => {});
     }
+  }
+
+  // ##########################################################################################################
+  // Setter
+  // ##########################################################################################################
+  setCurrentConversation(conversationId: string) {
+    let foundConversation = this.conversations.find(
+      (conversation) => conversation.id === conversationId
+    );
+
+    if (foundConversation) {
+      this.currentConversation = foundConversation;
+    }
+  }
+
+  // ##########################################################################################################
+  // Getter
+  // ##########################################################################################################
+  getCurrentConversation() {
+    return this.currentConversation;
   }
 }
