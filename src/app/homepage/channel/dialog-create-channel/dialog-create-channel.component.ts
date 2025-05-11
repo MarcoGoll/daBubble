@@ -91,9 +91,9 @@ export class DialogCreateChannelComponent {
     this.dialogRef.close();
   }
 
-  setConversationIdWithinChannel() {
+  async setConversationIdWithinChannel() {
     if (this.conversationToCreate.channelId && this.conversationToCreate.id) {
-      this.channelService.setConversationId(
+      await this.channelService.setConversationId(
         this.conversationToCreate.channelId,
         this.conversationToCreate.id
       );

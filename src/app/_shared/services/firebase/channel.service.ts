@@ -161,6 +161,7 @@ export class ChannelService {
       name: channel.name,
       description: channel.description,
       members: channel.members,
+      conversationId: channel.conversationId,
     };
   }
 
@@ -197,11 +198,11 @@ export class ChannelService {
   // ##########################################################################################################
   // Setter
   // ##########################################################################################################
-  setConversationId(channelId: string, conversationId: string) {
+  async setConversationId(channelId: string, conversationId: string) {
     let channelToBeUpdated = this.getChannelById(channelId);
     if (channelToBeUpdated) {
       channelToBeUpdated.conversationId = conversationId;
-      this.updateChannel(channelToBeUpdated);
+      await this.updateChannel(channelToBeUpdated);
     }
   }
 }
