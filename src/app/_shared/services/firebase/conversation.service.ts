@@ -101,8 +101,8 @@ export class ConversationService {
     return {
       id: id,
       messageBlock: obj.messageBlock || { messages: [] },
-      type: obj.type || null,
-      channelId: obj.members || '',
+      type: obj.type || 'channel',
+      channelId: obj.channelId || '',
       userIds: obj.userIds || [],
     };
   }

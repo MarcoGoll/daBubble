@@ -44,7 +44,7 @@ export class DialogCreateChannelComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {}
 
-  submitCreateChannel(ngForm: NgForm) {
+  async submitCreateChannel(ngForm: NgForm) {
     ngForm.control.markAllAsTouched();
     if (ngForm.invalid) {
       return;
@@ -56,7 +56,9 @@ export class DialogCreateChannelComponent {
       } else {
         this.channelToCreate.name = this.channelName;
         this.channelToCreate.description = this.channelDescription;
-        this.createChannel();
+        await this.createChannel();
+        await this.createConversation();
+        await this.setConversationIdWithinChannel();
         this.resetCreateChannel(ngForm);
       }
     }
@@ -68,7 +70,6 @@ export class DialogCreateChannelComponent {
 
   async createChannel() {
     await this.channelService.createChannel(this.channelToCreate);
-    this.createConversation();
   }
 
   async createConversation() {
@@ -88,5 +89,14 @@ export class DialogCreateChannelComponent {
    */
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  setConversationIdWithinChannel() {
+    if (this.conversationToCreate.channelId && this.conversationToCreate.id) {
+      this.channelService.setConversationId(
+        this.conversationToCreate.channelId,
+        this.conversationToCreate.id
+      );
+    }
   }
 }

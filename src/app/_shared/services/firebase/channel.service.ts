@@ -118,7 +118,12 @@ export class ChannelService {
   }
 
   // ######## READ ########
-  getChannelById() {} //TODO: tbd.
+  getChannelById(channelId: string) {
+    let foundChannel = this.channels.find(
+      (channel) => channel.id === channelId
+    );
+    return foundChannel;
+  }
 
   // ######## UPDATE ########
   /**
@@ -179,11 +184,24 @@ export class ChannelService {
     }
   }
 
-  // ######## Validations ########
+  // ##########################################################################################################
+  // Validations
+  // ##########################################################################################################
   isChannelAlreadyExisting(channelName: string) {
     return this.channels.some(
       (channel) =>
         channel.name.toLocaleLowerCase() === channelName.toLocaleLowerCase()
     );
+  }
+
+  // ##########################################################################################################
+  // Setter
+  // ##########################################################################################################
+  setConversationId(channelId: string, conversationId: string) {
+    let channelToBeUpdated = this.getChannelById(channelId);
+    if (channelToBeUpdated) {
+      channelToBeUpdated.conversationId = conversationId;
+      this.updateChannel(channelToBeUpdated);
+    }
   }
 }
