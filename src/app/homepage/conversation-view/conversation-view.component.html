@@ -11,7 +11,10 @@
                         {{message.text}}
                     </div>
                     }
-
+                </div>
+                <div class="conversation-view-new-message">
+                    <input type="text" [(ngModel)]="newMessageText">
+                    <button (click)="createNewMessage()">senden</button>
                 </div>
             </mat-card>
         </div>
