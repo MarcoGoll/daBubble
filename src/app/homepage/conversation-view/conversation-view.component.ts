@@ -21,7 +21,7 @@ export class ConversationViewComponent {
     if (this.authService.currentLoggedInUser?.displayName) {
       let newMessage: Message = {
         timestamp: Date.now(),
-        sender: this.authService.currentLoggedInUser.displayName,
+        sender: this.authService.currentLoggedInUser.uid,
         text: this.newMessageText,
       };
       this.conversationService
