@@ -122,9 +122,9 @@ export class UserService {
   }
 
   // ######## READ ########
-  getUserById() {} //TODO: tbd.
-
-  getUserByUid() {} //TODO: tbd.
+  getUserByUid(uid: string) {
+    return this.users.find((user) => user.uid === uid);
+  }
 
   // ######## UPDATE ########
   /**

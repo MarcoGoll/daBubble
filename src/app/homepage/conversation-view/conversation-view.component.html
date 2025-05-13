@@ -2,19 +2,27 @@
     <section id="section-conversation-view">
         <div id="section-conversation-view-content">
             <mat-card id="conversation-view-container" appearance="raised">
+                <div class="conversation-view-channel-info"></div>
                 <div class="conversation-view-messages">
                     @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index)
                     {
                     <div class="conversation-view-message">
                         {{message.timestamp}}
-                        {{message.sender}}
+                        {{userService.getUserByUid(message.sender)?.fullName}}
                         {{message.text}}
                     </div>
                     }
                 </div>
                 <div class="conversation-view-new-message">
-                    <input type="text" [(ngModel)]="newMessageText">
-                    <button (click)="createNewMessage()">senden</button>
+                    <textarea class="new-message-textarea" [(ngModel)]="newMessageText"
+                        placeholder="Nachricht senden ..."></textarea>
+                    <div class="new-message-controls">
+                        <div class="new-message-special-btns">
+                            <button class="new-message-icon-btn">smile</button>
+                            <button class="new-message-at-btn">&#64;</button>
+                        </div>
+                        <button class="new-message-send-btn" (click)="createNewMessage()">senden</button>
+                    </div>
                 </div>
             </mat-card>
         </div>

@@ -4,6 +4,7 @@ import { ConversationService } from '../../_shared/services/firebase/conversatio
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { Message } from '../../_shared/interfaces/message';
+import { UserService } from '../../_shared/services/firebase/user.service';
 
 @Component({
   selector: 'app-conversation-view',
@@ -15,6 +16,7 @@ import { Message } from '../../_shared/interfaces/message';
 export class ConversationViewComponent {
   conversationService = inject(ConversationService);
   authService = inject(AuthenticationService);
+  userService = inject(UserService);
   newMessageText: string = '';
 
   async createNewMessage() {
