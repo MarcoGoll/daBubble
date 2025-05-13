@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 import { Message } from '../../_shared/interfaces/message';
 import { UserService } from '../../_shared/services/firebase/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-conversation-view',
   standalone: true,
-  imports: [MatCardModule, FormsModule],
+  imports: [MatCardModule, FormsModule, CommonModule],
   templateUrl: './conversation-view.component.html',
   styleUrl: './conversation-view.component.scss',
 })
