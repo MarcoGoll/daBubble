@@ -36,6 +36,7 @@ export class ConversationService {
     },
     type: null,
   };
+  allMessageDatesCurrentConversation: string[] = [];
   firestore: Firestore = inject(Firestore);
 
   /**
@@ -219,6 +220,7 @@ export class ConversationService {
 
     if (foundConversation) {
       this.currentConversation = foundConversation;
+      this.fillAllMessageDates();
     }
   }
 
@@ -227,5 +229,33 @@ export class ConversationService {
   // ##########################################################################################################
   getCurrentConversation() {
     return this.currentConversation;
+  }
+
+  // OTHERS
+  fillAllMessageDates() {
+    this.allMessageDatesCurrentConversation = [];
+    this.currentConversation.messageBlock.messages.forEach((message) => {
+      if (
+        !this.allMessageDatesCurrentConversation.includes(
+          this.formatDate(message.timestamp)
+        )
+      ) {
+        this.allMessageDatesCurrentConversation.push(
+          this.formatDate(message.timestamp)
+        );
+      }
+    });
+    console.log(
+      'Alle Datumsangaben groupiert: ',
+      this.allMessageDatesCurrentConversation
+    );
+  }
+
+  formatDate(timestamp: number): string {
+    return new Date(timestamp).toLocaleDateString('de-DE', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+    });
   }
 }

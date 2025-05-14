@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ConversationService } from '../../_shared/services/firebase/conversation.service';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +19,16 @@ export class ConversationViewComponent {
   authService = inject(AuthenticationService);
   userService = inject(UserService);
   newMessageText: string = '';
+
+  checkIsMyMessage(uid: string) {
+    return this.authService.currentLoggedInUser?.uid === uid;
+  }
+
+  shouldShowDivider(date: string | null): boolean {
+    //TODO: true if date not displayed so far / false if date already displayed
+
+    return true;
+  }
 
   async createNewMessage() {
     if (this.authService.currentLoggedInUser?.displayName) {

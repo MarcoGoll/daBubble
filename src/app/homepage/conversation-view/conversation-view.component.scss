@@ -18,11 +18,77 @@
     @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
 }
 
+.conversation-view-messages{
+    @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:8px);
+}
+
+.conversation-view-message{
+    @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:$size-message-distance);
+}
+
+.message-content{
+    @include setFlex($ai:flex-start, $gap: 8px);
+}
+
+.avatar-image{
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+}
+
+.other-message-content{
+    justify-content: flex-start;
+}
+
+.my-message-content{
+    flex-direction: row-reverse ;
+    justify-content: flex-start;
+}
+
+.message-info{
+    @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:8px);
+}
+
+.my-message-info{
+    align-items: flex-end;
+}
+
+.message-info-sender{
+     @include setFlex($gap:16px);
+}
+
+.my-message-info-sender{
+    flex-direction: row-reverse;
+}
+
+.message-info-responses{
+     @include setFlex($gap:16px);
+     padding-bottom: $size-message-distance;
+}
+
+.my-message-info-responses{
+    flex-direction: row-reverse;
+}
+
+.message-divider{
+    @include setFlex();
+    height: 1px;
+    border: 1px solid $clrLines;
+
+    .message-timestamp{
+        border: 1px solid $clrLines;
+        border-radius: 30px;
+        padding: 5px 15px;
+        background-color: $clrBaseBright;
+        font-size: $fsSecondary;
+    }
+}
+
 .conversation-view-new-message{
     position: relative;
     width: 100%;
     height: 120px;
-    border: 1px solid $clrMessageBorder;
+    border: 1px solid $clrLines;
     border-radius: 20px;
 }
 
@@ -56,6 +122,5 @@
     }
 }
 
-.new-message-send-btn{
 
-}
+
