@@ -20,14 +20,21 @@ export class ConversationViewComponent {
   userService = inject(UserService);
   newMessageText: string = '';
 
+  shownDates: Set<string> = new Set();
+
   checkIsMyMessage(uid: string) {
     return this.authService.currentLoggedInUser?.uid === uid;
   }
 
   shouldShowDivider(date: string | null): boolean {
     //TODO: true if date not displayed so far / false if date already displayed
-
-    return true;
+    if (!date) return false;
+    if (this.shownDates.has(date)) {
+      return false;
+    } else {
+      this.shownDates.add(date);
+      return true;
+    }
   }
 
   async createNewMessage() {
