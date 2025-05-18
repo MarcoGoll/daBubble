@@ -4,37 +4,36 @@
             <mat-card id="conversation-view-container" appearance="raised">
                 <div class="conversation-view-channel-info"></div>
                 <div class="conversation-view-messages">
-                    @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index)
-                    {
-                    <div class="conversation-view-message">
-                        @if (shouldShowDivider(message.timestamp | date:'EEEE, d. MMMM')) {
-                        <div class="message-divider">
-                            <span class="message-timestamp">{{message.timestamp| date:'EEEE, d. MMMM'}}</span>
-                        </div>
-                        }
-                        <div class="message-content"
-                            [ngClass]="{'other-message-content':!checkIsMyMessage(message.sender), 'my-message-content': checkIsMyMessage(message.sender)}">
-                            <img class="avatar-image"
-                                src="./assets/img/character{{userService.getUserByUid(message.sender)?.avatarId}}.svg"
-                                alt="Avatar Image">
-                            <div class="message-info"
-                                [ngClass]="{'other-message-info':!checkIsMyMessage(message.sender), 'my-message-info': checkIsMyMessage(message.sender)}">
-                                <div class="message-info-sender"
-                                    [ngClass]="{'other-message-info-sender':!checkIsMyMessage(message.sender), 'my-message-info-sender': checkIsMyMessage(message.sender)}">
-                                    <span class="sender">{{userService.getUserByUid(message.sender)?.fullName}}</span>
-                                    <span class="time">{{message.timestamp| date:'HH:mm'}}</span>
-                                </div>
-                                <div class="message-info-text-container">
-                                    <span class="message-info-text">{{message.text}}</span>
-                                </div>
-                                <div class="message-info-responses"
-                                    [ngClass]="{'other-message-info-responses':!checkIsMyMessage(message.sender), 'my-message-info-responses': checkIsMyMessage(message.sender)}">
-                                    <span>2 Antworten</span>
-                                    <span class="time">Letzte Antwort 14:56</span>
-                                </div>
+                    @for (date of conversationService.allMessageDatesCurrentConversation; track $index) {
+                    <div class="message-divider">
+                        <span class="message-timestamp">{{date}}</span>
+                    </div>
+                    @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index){
+                    @if (date === (message.timestamp| date:'EEEE, d. MMMM')) {
+                    <div class="message-content"
+                        [ngClass]="{'other-message-content':!checkIsMyMessage(message.sender), 'my-message-content': checkIsMyMessage(message.sender)}">
+                        <img class="avatar-image"
+                            src="./assets/img/character{{userService.getUserByUid(message.sender)?.avatarId}}.svg"
+                            alt="Avatar Image">
+                        <div class="message-info"
+                            [ngClass]="{'other-message-info':!checkIsMyMessage(message.sender), 'my-message-info': checkIsMyMessage(message.sender)}">
+                            <div class="message-info-sender"
+                                [ngClass]="{'other-message-info-sender':!checkIsMyMessage(message.sender), 'my-message-info-sender': checkIsMyMessage(message.sender)}">
+                                <span class="sender">{{userService.getUserByUid(message.sender)?.fullName}}</span>
+                                <span class="time">{{message.timestamp| date:'HH:mm'}}</span>
+                            </div>
+                            <div class="message-info-text-container">
+                                <span class="message-info-text">{{message.text}}</span>
+                            </div>
+                            <div class="message-info-responses"
+                                [ngClass]="{'other-message-info-responses':!checkIsMyMessage(message.sender), 'my-message-info-responses': checkIsMyMessage(message.sender)}">
+                                <span>2 Antworten</span>
+                                <span class="time">Letzte Antwort 14:56</span>
                             </div>
                         </div>
                     </div>
+                    }
+                    }
                     }
                 </div>
                 <div class="conversation-view-new-message">

@@ -74,6 +74,7 @@
     @include setFlex();
     height: 1px;
     border: 1px solid $clrLines;
+    margin-bottom: 32px;
 
     .message-timestamp{
         border: 1px solid $clrLines;
