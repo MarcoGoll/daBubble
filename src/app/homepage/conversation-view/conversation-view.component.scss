@@ -16,6 +16,7 @@
 #conversation-view-container{
     height: 100%;
     @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
+    padding: 32px 0px;
 }
 
 .conversation-view-messages{
@@ -28,6 +29,11 @@
 
 .message-content{
     @include setFlex($ai:flex-start, $gap: 8px);
+    padding: 8px 32px;
+
+    &:hover{
+        background-color: $clrHighlight1;
+    }
 }
 
 .avatar-image{
@@ -38,6 +44,11 @@
 
 .other-message-content{
     justify-content: flex-start;
+    &:hover{
+        .message-info-text-container{
+            background-color: $clrBaseBright;
+        }
+    }
 }
 
 .my-message-content{
@@ -47,23 +58,51 @@
 
 .message-info{
     @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:8px);
+    
+    .sender{
+        font-size: $fsDefault;
+        font-weight: 700;
+    }
+    .time{
+        font-size: $fsTertiary;
+        color: $clrBaseGrey;
+    }
+
+    .message-info-text-container{
+        padding: 16px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+}
+
+.other-message-info{
+    .message-info-text-container{
+        background-color: $clrHighlight1;   
+        border-top-right-radius: 30px;
+    }
 }
 
 .my-message-info{
     align-items: flex-end;
+     .message-info-text-container{
+        background-color: $clrHighlight2Brighter1;
+        color: $clrBaseBright;
+        border-top-left-radius: 30px;
+    }
 }
 
 .message-info-sender{
-     @include setFlex($gap:16px);
+     @include setFlex($jc:flex-start, $gap:16px);
 }
 
 .my-message-info-sender{
     flex-direction: row-reverse;
 }
 
+
+
 .message-info-responses{
      @include setFlex($gap:16px);
-     padding-bottom: $size-message-distance;
 }
 
 .my-message-info-responses{
@@ -74,7 +113,8 @@
     @include setFlex();
     height: 1px;
     border: 1px solid $clrLines;
-    margin-bottom: 32px;
+    margin-block: 32px;
+    margin-inline: 32px;
 
     .message-timestamp{
         border: 1px solid $clrLines;

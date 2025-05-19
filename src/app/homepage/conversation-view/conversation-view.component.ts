@@ -47,6 +47,7 @@ export class ConversationViewComponent {
       this.conversationService
         .getCurrentConversation()
         .messageBlock.messages.push(newMessage);
+      this.conversationService.addMessageDates(newMessage.timestamp);
       await this.conversationService.updateConversation(
         this.conversationService.getCurrentConversation()
       );

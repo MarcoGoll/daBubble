@@ -251,6 +251,16 @@ export class ConversationService {
     );
   }
 
+  addMessageDates(timestamp: number) {
+    if (
+      !this.allMessageDatesCurrentConversation.includes(
+        this.formatDate(timestamp)
+      )
+    ) {
+      this.allMessageDatesCurrentConversation.push(this.formatDate(timestamp));
+    }
+  }
+
   formatDate(timestamp: number): string {
     return new Date(timestamp).toLocaleDateString('de-DE', {
       weekday: 'long',

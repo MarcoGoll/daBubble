@@ -173,6 +173,7 @@ export class AuthenticationService {
         this.currentLoggedInUser = userCredential.user;
         this.router.navigate(['/']);
         console.log('This user was logged in: ', this.currentLoggedInUser);
+        //TODO: CREATE USER within DB IF NOT ALREADY CREATED
       })
       .catch((error) => {
         // Handle Errors here.
