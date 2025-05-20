@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GlobalMessagesService } from '../../../_shared/services/global-messages.service';
 
 @Component({
   selector: 'app-dialog-create-channel',
@@ -29,6 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class DialogCreateChannelComponent {
   channelService = inject(ChannelService);
   conversationService = inject(ConversationService);
+  globalMessageService = inject(GlobalMessagesService);
   channelName: string = '';
   channelDescription: string = '';
   channelToCreate: Channel = {
@@ -59,6 +61,11 @@ export class DialogCreateChannelComponent {
         await this.createChannel();
         await this.createConversation();
         await this.setConversationIdWithinChannel();
+        this.globalMessageService.showSnackbarNotification(
+          `Channel: ${this.channelName} wurde erfolgreich erstellt.`,
+          '',
+          'success'
+        );
         this.resetCreateChannel(ngForm);
       }
     }
