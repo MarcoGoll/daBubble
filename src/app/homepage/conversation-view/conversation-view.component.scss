@@ -102,7 +102,7 @@
 
 
 .message-info-responses{
-     @include setFlex($gap:16px);
+     @include setFlex($jc:flex-start, $gap:16px);
 }
 
 .my-message-info-responses{
