@@ -2,7 +2,29 @@
     <section id="section-conversation-view">
         <div id="section-conversation-view-content">
             <mat-card id="conversation-view-container" appearance="raised">
-                <div class="conversation-view-channel-info"></div>
+                <div class="conversation-view-channel-info">
+                    @if(conversationService.currentConversationType == 'empty'){
+                    <div>
+                        <h2>Chooose a Conversation</h2>
+                    </div>
+                    }@else {
+                    @if(conversationService.currentConversationType == 'channel'){
+                    <div>
+                        {{getChannelName()}}
+                    </div>
+                    <!-- TODO: MEMBERS -->
+                    <!-- <div>
+                        {{getChannelMembers()}}
+                    </div> -->
+                    }@else {
+                    @if(conversationService.currentConversationType == 'user'){
+                    <div></div>
+                    }
+                    }
+                    }
+
+
+                </div>
                 <div class="conversation-view-messages">
                     @for (date of conversationService.allMessageDatesCurrentConversation; track $index) {
                     <div class="message-divider">

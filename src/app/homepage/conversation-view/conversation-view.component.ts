@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../_shared/services/firebase/authentic
 import { Message } from '../../_shared/interfaces/message';
 import { UserService } from '../../_shared/services/firebase/user.service';
 import { CommonModule } from '@angular/common';
+import { ChannelService } from '../../_shared/services/firebase/channel.service';
 
 @Component({
   selector: 'app-conversation-view',
@@ -18,6 +19,7 @@ export class ConversationViewComponent {
   conversationService = inject(ConversationService);
   authService = inject(AuthenticationService);
   userService = inject(UserService);
+  channelService = inject(ChannelService);
   newMessageText: string = '';
 
   shownDates: Set<string> = new Set();
@@ -52,5 +54,22 @@ export class ConversationViewComponent {
         this.conversationService.getCurrentConversation()
       );
     }
+  }
+
+  getChannelName() {
+    return this.channelService.channels.find(
+      (channel) =>
+        channel.id ==
+        this.conversationService.getCurrentConversation().channelId
+    )?.name;
+  }
+
+  // TODO: Determine Members Name
+  getChannelMembers() {
+    return this.channelService.channels.find(
+      (channel) =>
+        channel.id ==
+        this.conversationService.getCurrentConversation().channelId
+    )?.members;
   }
 }

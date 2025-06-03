@@ -18,6 +18,8 @@ import { Conversation } from '../../interfaces/conversation';
 export class ConversationService {
   unsubConversations;
   conversations: Conversation[] = [];
+  currentConversationType: 'channel' | 'user' | 'empty' = 'empty';
+
   private currentConversation: Conversation = {
     id: '',
     messageBlock: {
@@ -214,6 +216,7 @@ export class ConversationService {
   // Setter
   // ##########################################################################################################
   setCurrentConversation(conversationId: string) {
+    this.currentConversationType = 'channel';
     let foundConversation = this.conversations.find(
       (conversation) => conversation.id === conversationId
     );
