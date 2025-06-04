@@ -7,6 +7,7 @@ import { Message } from '../../_shared/interfaces/message';
 import { UserService } from '../../_shared/services/firebase/user.service';
 import { CommonModule } from '@angular/common';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
+import { User } from '../../_shared/interfaces/user';
 
 @Component({
   selector: 'app-conversation-view',
@@ -66,10 +67,13 @@ export class ConversationViewComponent {
 
   // TODO: Determine Members Name
   getChannelMembers() {
-    return this.channelService.channels.find(
+    let memberUids: string[] | undefined = this.channelService.channels.find(
       (channel) =>
         channel.id ==
         this.conversationService.getCurrentConversation().channelId
     )?.members;
+    let foundMembers: User[] = [];
+    if (memberUids) foundMembers = this.userService.getUserByUids(memberUids);
+    return foundMembers;
   }
 }

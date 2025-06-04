@@ -126,6 +126,20 @@ export class UserService {
     return this.users.find((user) => user.uid === uid);
   }
 
+  getUserByUids(uids: string[]) {
+    let foundUsers: User[] = [];
+
+    this.users.filter((user) => {
+      uids.forEach((uid) => {
+        if (uid == user.uid) {
+          foundUsers.push(user);
+        }
+      });
+    });
+
+    return foundUsers;
+  }
+
   // ######## UPDATE ########
   /**
    * Updates an existing user in the Firestore database based.

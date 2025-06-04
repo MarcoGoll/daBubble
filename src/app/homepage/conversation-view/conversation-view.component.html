@@ -10,12 +10,15 @@
                     }@else {
                     @if(conversationService.currentConversationType == 'channel'){
                     <div>
+                        <!-- TODO: ChannelName -->
                         {{getChannelName()}}
                     </div>
-                    <!-- TODO: MEMBERS -->
-                    <!-- <div>
-                        {{getChannelMembers()}}
-                    </div> -->
+                    <div>
+                        <!-- TODO: MEMBERS -->
+                        @for (member of getChannelMembers(); track $index) {
+                        {{member.firstName}}
+                        }
+                    </div>
                     }@else {
                     @if(conversationService.currentConversationType == 'user'){
                     <div></div>

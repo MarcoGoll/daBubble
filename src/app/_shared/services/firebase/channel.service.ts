@@ -98,7 +98,6 @@ export class ChannelService {
   // CRUD
   // ##########################################################################################################
   // ######## CREATE ########
-  // TODO: ADD current User to Channel-Members (Creator needs to be a member!)
   /**
    * Creates a new channel to the Firestore database.
    * After successfully creating the channel, it updates the channel to add the id as attribute

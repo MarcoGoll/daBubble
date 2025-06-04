@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GlobalMessagesService } from '../../../_shared/services/global-messages.service';
+import { AuthenticationService } from '../../../_shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-dialog-create-channel',
@@ -28,6 +29,7 @@ import { GlobalMessagesService } from '../../../_shared/services/global-messages
   styleUrl: './dialog-create-channel.component.scss',
 })
 export class DialogCreateChannelComponent {
+  authService = inject(AuthenticationService);
   channelService = inject(ChannelService);
   conversationService = inject(ConversationService);
   globalMessageService = inject(GlobalMessagesService);
@@ -58,6 +60,11 @@ export class DialogCreateChannelComponent {
       } else {
         this.channelToCreate.name = this.channelName;
         this.channelToCreate.description = this.channelDescription;
+        if (this.authService.currentLoggedInUser?.uid) {
+          this.channelToCreate.members.push(
+            this.authService.currentLoggedInUser.uid
+          );
+        }
         await this.createChannel();
         await this.createConversation();
         await this.setConversationIdWithinChannel();
