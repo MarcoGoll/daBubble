@@ -4,75 +4,92 @@
             <mat-card id="conversation-view-container" appearance="raised">
                 <div class="conversation-view-channel-info">
                     @if(conversationService.currentConversationType == 'empty'){
-                    <div>
+                    <div class="conversation-empty-container">
                         <h2>Chooose a Conversation</h2>
                     </div>
                     }@else {
                     @if(conversationService.currentConversationType == 'channel'){
-                    <div>
-                        <!-- TODO: ChannelName -->
+                    <div class="channel-container">
+                        <!-- TODO: SCSS ChannelName -->
                         {{getChannelName()}}
                     </div>
-                    <div>
-                        <!-- TODO: MEMBERS -->
-                        @for (member of getChannelMembers(); track $index) {
-                        {{member.firstName}}
+                    <div class="member-container">
+                        <div class="member-images-container">
+                            <!-- TODO: SCSS MEMBERS -->
+                            @for (member of getChannelMembers(); track member.id; let i = $index) {
+                            @if (i<3) { <div class="member-image-container">
+                                <img src="./assets/img/character{{member.avatarId}}.svg" alt="">
+                        </div>
+                        }@else {
+                        @if (i==3){
+                        <div class="remaining-members-container">
+                            +{{getChannelMembers().length-3}}
+                        </div>
+                        }
+                        }
                         }
                     </div>
-                    }@else {
-                    @if(conversationService.currentConversationType == 'user'){
-                    <div></div>
-                    }
-                    }
-                    }
+                    <div>
+                        <!-- TODO: ADD NEW MEMBERS -->
+                    </div>
+                </div>
+
+                }@else {
+                @if(conversationService.currentConversationType == 'user'){
+                <div class="user-container">
+                    <!-- TODO: Coversation with user ... -->
+                </div>
+                }
+                }
+                }
 
 
-                </div>
-                <div class="conversation-view-messages">
-                    @for (date of conversationService.allMessageDatesCurrentConversation; track $index) {
-                    <div class="message-divider">
-                        <span class="message-timestamp">{{date}}</span>
-                    </div>
-                    @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index){
-                    @if (date === (message.timestamp| date:'EEEE, d. MMMM')) {
-                    <div class="message-content"
-                        [ngClass]="{'other-message-content':!checkIsMyMessage(message.sender), 'my-message-content': checkIsMyMessage(message.sender)}">
-                        <img class="avatar-image"
-                            src="./assets/img/character{{userService.getUserByUid(message.sender)?.avatarId}}.svg"
-                            alt="Avatar Image">
-                        <div class="message-info"
-                            [ngClass]="{'other-message-info':!checkIsMyMessage(message.sender), 'my-message-info': checkIsMyMessage(message.sender)}">
-                            <div class="message-info-sender"
-                                [ngClass]="{'other-message-info-sender':!checkIsMyMessage(message.sender), 'my-message-info-sender': checkIsMyMessage(message.sender)}">
-                                <span class="sender">{{userService.getUserByUid(message.sender)?.fullName}}</span>
-                                <span class="time">{{message.timestamp| date:'HH:mm'}}</span>
-                            </div>
-                            <div class="message-info-text-container">
-                                <span class="message-info-text">{{message.text}}</span>
-                            </div>
-                            <div class="message-info-responses"
-                                [ngClass]="{'other-message-info-responses':!checkIsMyMessage(message.sender), 'my-message-info-responses': checkIsMyMessage(message.sender)}">
-                                <span>2 Antworten</span>
-                                <span class="time">Letzte Antwort 14:56</span>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                    }
-                    }
-                </div>
-                <div class="conversation-view-new-message">
-                    <textarea class="new-message-textarea" [(ngModel)]="newMessageText"
-                        placeholder="Nachricht senden ..."></textarea>
-                    <div class="new-message-controls">
-                        <div class="new-message-special-btns">
-                            <button class="new-message-icon-btn">smile</button>
-                            <button class="new-message-at-btn">&#64;</button>
-                        </div>
-                        <button class="new-message-send-btn" (click)="createNewMessage()">senden</button>
-                    </div>
-                </div>
-            </mat-card>
         </div>
-    </section>
+        <div class="conversation-view-messages">
+            @for (date of conversationService.allMessageDatesCurrentConversation; track $index) {
+            <div class="message-divider">
+                <span class="message-timestamp">{{date}}</span>
+            </div>
+            @for (message of conversationService.getCurrentConversation().messageBlock.messages ; track $index){
+            @if (date === (message.timestamp| date:'EEEE, d. MMMM')) {
+            <div class="message-content"
+                [ngClass]="{'other-message-content':!checkIsMyMessage(message.sender), 'my-message-content': checkIsMyMessage(message.sender)}">
+                <img class="avatar-image"
+                    src="./assets/img/character{{userService.getUserByUid(message.sender)?.avatarId}}.svg"
+                    alt="Avatar Image">
+                <div class="message-info"
+                    [ngClass]="{'other-message-info':!checkIsMyMessage(message.sender), 'my-message-info': checkIsMyMessage(message.sender)}">
+                    <div class="message-info-sender"
+                        [ngClass]="{'other-message-info-sender':!checkIsMyMessage(message.sender), 'my-message-info-sender': checkIsMyMessage(message.sender)}">
+                        <span class="sender">{{userService.getUserByUid(message.sender)?.fullName}}</span>
+                        <span class="time">{{message.timestamp| date:'HH:mm'}}</span>
+                    </div>
+                    <div class="message-info-text-container">
+                        <span class="message-info-text">{{message.text}}</span>
+                    </div>
+                    <div class="message-info-responses"
+                        [ngClass]="{'other-message-info-responses':!checkIsMyMessage(message.sender), 'my-message-info-responses': checkIsMyMessage(message.sender)}">
+                        <span>2 Antworten</span>
+                        <span class="time">Letzte Antwort 14:56</span>
+                    </div>
+                </div>
+            </div>
+            }
+            }
+            }
+        </div>
+        <div class="conversation-view-new-message">
+            <textarea class="new-message-textarea" [(ngModel)]="newMessageText"
+                placeholder="Nachricht senden ..."></textarea>
+            <div class="new-message-controls">
+                <div class="new-message-special-btns">
+                    <button class="new-message-icon-btn">smile</button>
+                    <button class="new-message-at-btn">&#64;</button>
+                </div>
+                <button class="new-message-send-btn" (click)="createNewMessage()">senden</button>
+            </div>
+        </div>
+        </mat-card>
+</div>
+</section>
 </div>

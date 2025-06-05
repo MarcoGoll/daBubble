@@ -30,7 +30,6 @@ export class ConversationViewComponent {
   }
 
   shouldShowDivider(date: string | null): boolean {
-    //TODO: true if date not displayed so far / false if date already displayed
     if (!date) return false;
     if (this.shownDates.has(date)) {
       return false;
@@ -65,7 +64,6 @@ export class ConversationViewComponent {
     )?.name;
   }
 
-  // TODO: Determine Members Name
   getChannelMembers() {
     let memberUids: string[] | undefined = this.channelService.channels.find(
       (channel) =>
