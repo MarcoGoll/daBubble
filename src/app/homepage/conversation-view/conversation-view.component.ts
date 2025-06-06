@@ -74,4 +74,8 @@ export class ConversationViewComponent {
     if (memberUids) foundMembers = this.userService.getUserByUids(memberUids);
     return foundMembers;
   }
+
+  openDialogAddUserToChannel() {
+    // TODO: Create DialogComponenten and open it here
+  }
 }

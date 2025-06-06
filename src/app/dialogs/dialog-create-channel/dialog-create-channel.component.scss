@@ -1,4 +1,4 @@
-@import './../../../../styles.scss';
+@import './../../../styles.scss';
 
 #dialog-create-channel{
     @include setFlex($fd:column, $jc:flex-start, $ai:stretch, $gap:24px);

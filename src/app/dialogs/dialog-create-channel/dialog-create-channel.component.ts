@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { ChannelService } from '../../../_shared/services/firebase/channel.service';
-import { Channel } from '../../../_shared/interfaces/channel';
-import { Conversation } from '../../../_shared/interfaces/conversation';
-import { ConversationService } from '../../../_shared/services/firebase/conversation.service';
+import { ChannelService } from '../../_shared/services/firebase/channel.service';
+import { Channel } from '../../_shared/interfaces/channel';
+import { Conversation } from '../../_shared/interfaces/conversation';
+import { ConversationService } from '../../_shared/services/firebase/conversation.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,8 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GlobalMessagesService } from '../../../_shared/services/global-messages.service';
-import { AuthenticationService } from '../../../_shared/services/firebase/authentication.service';
+import { GlobalMessagesService } from '../../_shared/services/global-messages.service';
+import { AuthenticationService } from '../../_shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-dialog-create-channel',
