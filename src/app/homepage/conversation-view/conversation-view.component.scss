@@ -39,6 +39,14 @@
     }
 }
 
+.conversation-view-channel-info{
+    @include setFlex($jc:space-between, $gap:8px);
+    padding-inline: 32px;
+}
+
+.member-container{
+    @include setFlex($gap:8px);
+}
 
 // #####################################################################################################################
 // MESSAGES

@@ -20,17 +20,6 @@
                             @if (i<3) { <div class="member-image-container">
                                 <img src="./assets/img/character{{member.avatarId}}.svg" alt="">
                         </div>
-                        <!-- TODO: Why is the class icon-button-small not working? -->
-                        <button (click)="$event.stopPropagation();" class="icon-button-small" mat-icon-button
-                            matTooltipPosition="above" matTooltip="Leute hinzufügen"
-                            (click)="openDialogAddUserToChannel()">
-                            <svg class="btnSVG" width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M7 14C6.71667 14 6.47933 13.904 6.288 13.712C6.096 13.5207 6 13.2833 6 13V8H1C0.716667 8 0.479 7.904 0.287 7.712C0.0956668 7.52067 0 7.28333 0 7C0 6.71667 0.0956668 6.479 0.287 6.287C0.479 6.09567 0.716667 6 1 6H6V1C6 0.716667 6.096 0.479 6.288 0.287C6.47933 0.0956668 6.71667 0 7 0C7.28333 0 7.521 0.0956668 7.713 0.287C7.90433 0.479 8 0.716667 8 1V6H13C13.2833 6 13.5207 6.09567 13.712 6.287C13.904 6.479 14 6.71667 14 7C14 7.28333 13.904 7.52067 13.712 7.712C13.5207 7.904 13.2833 8 13 8H8V13C8 13.2833 7.90433 13.5207 7.713 13.712C7.521 13.904 7.28333 14 7 14Z"
-                                    fill="black" />
-                            </svg>
-                        </button>
                         }@else {
                         @if (i==3){
                         <div class="remaining-members-container">
@@ -39,7 +28,17 @@
                         }
                         }
                         }
+                        <!-- TODO: Why is the class icon-button-small not working? -->
+
                     </div>
+                    <button (click)="$event.stopPropagation();" class="icon-button-small" mat-icon-button
+                        matTooltipPosition="above" matTooltip="Leute hinzufügen" (click)="openDialogAddUserToChannel()">
+                        <svg class="btnSVG" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                            width="24px" fill="#CCDAF5">
+                            <path
+                                d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80Zm-360-80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0-80Zm0 400Z" />
+                        </svg>
+                    </button>
                     <div>
                         <!-- TODO: ADD NEW MEMBERS -->
                     </div>
@@ -53,8 +52,6 @@
                 }
                 }
                 }
-
-
         </div>
         <div class="conversation-view-messages">
             @for (date of conversationService.allMessageDatesCurrentConversation; track $index) {
