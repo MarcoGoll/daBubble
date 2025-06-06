@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
 import { User } from '../../_shared/interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 import { DialogEditChannelComponent } from '../../dialogs/dialog-edit-channel/dialog-edit-channel.component';
 import { DialogAddUserToChannelComponent } from '../../dialogs/dialog-add-user-to-channel/dialog-add-user-to-channel.component';
 import { DialogCurrentUserWithinChannelComponent } from '../../dialogs/dialog-current-user-within-channel/dialog-current-user-within-channel.component';
@@ -16,7 +18,13 @@ import { DialogCurrentUserWithinChannelComponent } from '../../dialogs/dialog-cu
 @Component({
   selector: 'app-conversation-view',
   standalone: true,
-  imports: [MatCardModule, FormsModule, CommonModule],
+  imports: [
+    MatCardModule,
+    FormsModule,
+    CommonModule,
+    MatTooltipModule,
+    MatButtonModule,
+  ],
   templateUrl: './conversation-view.component.html',
   styleUrl: './conversation-view.component.scss',
 })

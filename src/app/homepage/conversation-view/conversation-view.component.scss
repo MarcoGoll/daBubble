@@ -48,6 +48,11 @@
 
     button{
         cursor: pointer;
+        background-color: $clrHighlight1;
+        transition: $stdTransition;
+        &:hover{
+            transform: scale(1.1);
+        }
     }
 }
 
