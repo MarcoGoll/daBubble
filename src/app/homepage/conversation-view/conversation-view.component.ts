@@ -8,6 +8,10 @@ import { UserService } from '../../_shared/services/firebase/user.service';
 import { CommonModule } from '@angular/common';
 import { ChannelService } from '../../_shared/services/firebase/channel.service';
 import { User } from '../../_shared/interfaces/user';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditChannelComponent } from '../../dialogs/dialog-edit-channel/dialog-edit-channel.component';
+import { DialogAddUserToChannelComponent } from '../../dialogs/dialog-add-user-to-channel/dialog-add-user-to-channel.component';
+import { DialogCurrentUserWithinChannelComponent } from '../../dialogs/dialog-current-user-within-channel/dialog-current-user-within-channel.component';
 
 @Component({
   selector: 'app-conversation-view',
@@ -24,6 +28,8 @@ export class ConversationViewComponent {
   newMessageText: string = '';
 
   shownDates: Set<string> = new Set();
+
+  constructor(public dialog: MatDialog) {}
 
   checkIsMyMessage(uid: string) {
     return this.authService.currentLoggedInUser?.uid === uid;
@@ -75,7 +81,27 @@ export class ConversationViewComponent {
     return foundMembers;
   }
 
+  openDialogEditChannel() {
+    (document.activeElement as HTMLElement)?.blur(); // Entfernt Fokus vom aktiven Element
+    this.dialog.open(DialogEditChannelComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+    });
+  }
+
   openDialogAddUserToChannel() {
-    // TODO: Create DialogComponenten and open it here
+    (document.activeElement as HTMLElement)?.blur(); // Entfernt Fokus vom aktiven Element
+    this.dialog.open(DialogAddUserToChannelComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+    });
+  }
+
+  openDialogCurrentMember() {
+    (document.activeElement as HTMLElement)?.blur(); // Entfernt Fokus vom aktiven Element
+    this.dialog.open(DialogCurrentUserWithinChannelComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+    });
   }
 }

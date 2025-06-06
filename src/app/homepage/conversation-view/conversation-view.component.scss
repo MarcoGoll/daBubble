@@ -16,7 +16,7 @@
 #conversation-view-container{
     height: 100%;
     @include setFlex($fd: column, $jc:space-between, $ai:stretch, $gap:8px);
-    padding: 32px 0px;
+    padding: 16px 0px;
 }
 
 // #####################################################################################################################
@@ -42,6 +42,31 @@
 .conversation-view-channel-info{
     @include setFlex($jc:space-between, $gap:8px);
     padding-inline: 32px;
+    padding-bottom: 16px;
+    box-shadow: rgba(14, 16, 19, 0.08) 0px 5px 5px 0px;
+
+
+    button{
+        cursor: pointer;
+    }
+}
+
+.channel-container,.member-images-container{
+    cursor: pointer;
+    border-radius: 100px;
+    transition: $stdTransition;
+    &:hover{
+        background-color: $clrHighlight1;
+        color: $clrHighlight2;
+    }
+}
+
+.channel-container{
+    padding: 8px;
+}
+
+.member-images-container{
+    padding: 8px 16px;
 }
 
 .member-container{

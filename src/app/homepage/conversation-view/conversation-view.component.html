@@ -9,11 +9,11 @@
                     </div>
                     }@else {
                     @if(conversationService.currentConversationType == 'channel'){
-                    <div class="channel-container">
+                    <div class="channel-container" (click)="openDialogEditChannel()">
                         <!-- TODO: SCSS ChannelName -->
                         {{getChannelName()}}
                     </div>
-                    <div class="member-container">
+                    <div class="member-container" (click)="openDialogCurrentMember()">
                         <div class="member-images-container">
                             <!-- TODO: SCSS MEMBERS -->
                             @for (member of getChannelMembers(); track member.id; let i = $index) {
@@ -28,11 +28,11 @@
                         }
                         }
                         }
-                        <!-- TODO: Why is the class icon-button-small not working? -->
 
                     </div>
-                    <button (click)="$event.stopPropagation();" class="icon-button-small" mat-icon-button
-                        matTooltipPosition="above" matTooltip="Leute hinzufügen" (click)="openDialogAddUserToChannel()">
+                    <!-- TODO: Why is the class icon-button-small not working? -->
+                    <button class="icon-button-small" mat-icon-button matTooltipPosition="above"
+                        matTooltip="Leute hinzufügen" (click)="openDialogAddUserToChannel()">
                         <svg class="btnSVG" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                             width="24px" fill="#CCDAF5">
                             <path
