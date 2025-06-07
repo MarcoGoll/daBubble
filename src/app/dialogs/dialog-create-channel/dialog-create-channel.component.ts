@@ -48,6 +48,13 @@ export class DialogCreateChannelComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogCreateChannelComponent>) {}
 
+  /**
+   * Validates the provided form, checks for duplicate channel names, and creates a new channel along with its associated conversation.
+   * Displays a success message and resets the form if successful.
+   *
+   * @param {NgForm} ngForm - The Angular form instance for creating a channel.
+   * @returns {Promise<void>} - Returns early if the form is invalid or a duplicate channel name exists.
+   */
   async submitCreateChannel(ngForm: NgForm) {
     ngForm.control.markAllAsTouched();
     if (ngForm.invalid) {
@@ -78,14 +85,30 @@ export class DialogCreateChannelComponent {
     }
   }
 
+  /**
+   * Checks whether a channel with the given name already exists.
+   *
+   * @param {string} channelName - The name of the channel to check.
+   * @returns {boolean} - Returns true if a channel with the same name exists, otherwise false.
+   */
   checkIsChannelAlreadyExisting(channelName: string) {
     return this.channelService.isChannelAlreadyExisting(channelName);
   }
 
+  /**
+   * Creates a new channel using the current channel data.
+   *
+   * @returns {Promise<void>}
+   */
   async createChannel() {
     await this.channelService.createChannel(this.channelToCreate);
   }
 
+  /**
+   * Creates a new conversation linked to the current channel.
+   *
+   * @returns {Promise<void>}
+   */
   async createConversation() {
     this.conversationToCreate.channelId = this.channelToCreate.id;
     await this.conversationService.createConversation(
@@ -93,6 +116,11 @@ export class DialogCreateChannelComponent {
     );
   }
 
+  /**
+   * Resets the create channel form and closes the dialog.
+   *
+   * @param {NgForm} ngForm - The Angular form to be reset.
+   */
   resetCreateChannel(ngForm: NgForm) {
     ngForm.resetForm();
     this.closeDialog();
@@ -105,6 +133,11 @@ export class DialogCreateChannelComponent {
     this.dialogRef.close();
   }
 
+  /**
+   * Assigns the conversation ID to the corresponding channel, if both IDs are available.
+   *
+   * @returns {Promise<void>}
+   */
   async setConversationIdWithinChannel() {
     if (this.conversationToCreate.channelId && this.conversationToCreate.id) {
       await this.channelService.setConversationId(
