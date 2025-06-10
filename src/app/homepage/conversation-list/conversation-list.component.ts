@@ -44,14 +44,27 @@ export class ConversationListComponent implements OnInit {
   readonly panelOpenStateChannels = signal(false);
   readonly panelOpenStateUser = signal(false);
 
+  /**
+   * Component constructor.
+   *
+   * @param {MatDialog} dialog - Angular Material Dialog service instance used to open dialogs.
+   */
   constructor(public dialog: MatDialog) {}
 
+  /**
+   * Angular lifecycle hook that is called after the component's data-bound properties have been initialized.
+   * Starts a timeout to set the user's login status after 1 second.
+   */
   ngOnInit() {
     setTimeout(() => {
       this.setUserLoginStatus();
     }, 1000);
   }
 
+  /**
+   * Checks if a user is currently logged in.
+   * If so, updates the user's login status to "true" in the authentication service.
+   */
   setUserLoginStatus() {
     if (this.authService.currentLoggedInUser) {
       this.authService.setUserLoginStatus(
@@ -62,6 +75,11 @@ export class ConversationListComponent implements OnInit {
     }
   }
 
+  /**
+   * Opens the "Create Channel" dialog.
+   * Removes focus from the currently active element before opening the dialog.
+   * The dialog opens without automatically focusing or restoring focus.
+   */
   async openDialogCreateChannel() {
     (document.activeElement as HTMLElement)?.blur(); // Entfernt Fokus vom aktiven Element
     this.dialog.open(DialogCreateChannelComponent, {
